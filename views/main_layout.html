@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title><%=title%></title>
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/css/prettyPhoto.css" rel="stylesheet">
+    <link href="../assets/css/price-range.css" rel="stylesheet">
+    <link href="../assets/css/animate.css" rel="stylesheet">
+    <link href="../assets/css/main.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="../assets/js/html5shiv.js"></script>
+    <script src="../assets/js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="../assets/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
+
+<body ng-app="mainApp">
+
+
+<div ng-include="'/views/header.html'"></div>
+<div ng-include="'/views/slider.html'"></div>
+<div ng-view></div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr/>
+
+    <div ng-include="'/views/footer.html'"></div>
+
+
+
+
+
+
+<!--original scripts-->
+<script src="/assets/js/jquery.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/jquery.scrollUp.min.js"></script>
+<script src="/assets/js/price-range.js"></script>
+<script src="/assets/js/jquery.prettyPhoto.js"></script>
+<script src="/assets/js/main.js"></script>
+
+<!--angular-->
+<script src="/bower_components/angular/angular.min.js"></script>
+<script src="/bower_components/angular-route/angular-route.min.js"></script>
+<script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="/bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+<script src="/bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
+<!-- video -->
+<script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="/bower_components/videogular/videogular.js"></script>
+<script src="/bower_components/videogular-controls/vg-controls.js"></script>
+<script src="/bower_components/videogular-overlay-play/vg-overlay-play.js"></script>
+<script src="/bower_components/videogular-poster/vg-poster.js"></script>
+<script src="/bower_components/videogular-buffering/vg-buffering.js"></script>
+<script src="/bower_components/angular-thumbnails/dist/angular-thumbnails.js"></script>
+
+
+<!--module js-->
+<script src="/javascripts/core/core.js"></script>
+
+<script src="/javascripts/controllers/MainCtrl.js"></script>
+<script src="/javascripts/controllers/CartCtrl.js"></script>
+<script src="/javascripts/controllers/LoginCtrl.js"></script>
+<script src="/javascripts/controllers/AdminCtrl.js"></script>
+<script src="/javascripts/controllers/ItemCtrl.js"></script>
+<!--<script src="/javascripts/controllers/SlideCtrl.js"></script>
+<script src="/javascripts/controllers/LoginCtrl.js"></script>-->
+
+<!--<script src="/javascripts/controllers/VideoCtrl.js"></script>-->
+<!--<script src="/javascripts/controllers/BoardCtrl.js"></script>
+<script src="/javascripts/controllers/PaperCtrl.js"></script>
+<script src="/javascripts/controllers/MypageCtrl.js"></script>
+<script src="/javascripts/directives/mainBoard.js"></script>
+<script src="/javascripts/directives/mainNav.js"></script>
+<script src="/javascripts/directives/mainSlide.js"></script>-->
+<!--<script src="/javascripts/controllers/HeaderCtrl.js"></script>
+<script src="/javascripts/controllers/NavListCtrl.js"></script>
+<script src="/javascripts/controllers/SlideNavCtrl.js"></script>
+<script src="/javascripts/directives/mainPaper.js"></script>
+<script src="/javascripts/directives/tag.js"></script>-->
+
+
+</body>
+</html>

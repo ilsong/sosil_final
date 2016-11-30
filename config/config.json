@@ -1,0 +1,19 @@
+{
+    "title": "ShoppingMall",
+    "port": 3000,
+    "db": {
+        "host": "localhost",
+        "port": "3306",
+        "username": "root",
+        "password": "0000",
+        "database": "s",
+        "dialect": "mysql",
+        "logging": true,
+	    "multipleStatements": true,
+        "timezone": "+09:00",
+        "define" : {
+            "charset": "utf8",
+            "collate": "utf8_general_ci"
+        }
+    }
+}
