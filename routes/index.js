@@ -26,9 +26,9 @@ router.get('/member', loadUser, function(req, res, next) {
   res.render('member', { title: config.title });
 });
 
-/*router.get('/admin', function(req, res) {
+router.get('/admin', function(req, res) {
   res.render('admin');
-});*/
+});
 
 
 // router.get('/cart', loadUser, function(req, res, next) {

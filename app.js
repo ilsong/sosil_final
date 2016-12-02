@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session=require('express-session');
+var fileUpload = require('express-fileupload');
 
 var routes = require('./routes/index');
 var member = require('./routes/member');
@@ -12,8 +13,6 @@ var cart=require('./routes/cart');
 var item = require('./routes/item');
 
 var app = express();
-
-
 
 // assign the swig engine to .html files
 app.engine('html', require('ejs').renderFile);
@@ -40,6 +39,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(fileUpload());
 
 app.use('/', routes);
 app.use('/member', member);
@@ -71,11 +72,11 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
 	res.status(err.status || 500);
+
 	res.render('error', {
 		message: err.message,
 		error: {}
 	});
 });
-
 
 module.exports = app;
