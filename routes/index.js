@@ -30,6 +30,9 @@ router.get('/admin', function(req, res) {
   res.render('admin');
 });
 
+router.get('/login', function(req, res, next) {
+  res.render('login');
+});
 
 // router.get('/cart', loadUser, function(req, res, next) {
 //   res.render('cart', { title: config.title });
