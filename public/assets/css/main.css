@@ -1899,6 +1899,10 @@ h2.title {
   float: left;
   width: 47%
 }
+.form-three {
+  float: left;
+  width:70%
+}
 
 
 .shopper-info > form > input, 
@@ -1920,6 +1924,28 @@ h2.title {
 .form-two {
   margin-left: 5%
 }
+
+
+
+
+.form-three > form > select,
+.form-three > form > input{
+  background:#F0F0E9;
+  border: 0 none;
+  margin-bottom:10px;
+  padding: 10px;
+  width: 100%;
+  font-weight: 300
+}
+
+.form-three > form > select {
+  padding:10px 5px
+}
+
+.form-three {
+  margin-left: 5%
+}
+
 
 
 .order-message textarea {
