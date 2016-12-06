@@ -23,7 +23,7 @@ app.filter('offset', function() {
 
 app.run(['$rootScope', '$http', '$cookies', '$location', '$controller', '$sce', function($rootScope, $http, $cookies, $location, $controller, $sce) {
 
-    $http.get('/getSession').success(function(data) {
+    $http.get('/member/getSession').success(function(data) {
         $rootScope.session = data;
     });
 
