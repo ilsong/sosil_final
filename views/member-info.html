@@ -1,5 +1,42 @@
+<section>
 <div ng-init="initMember()"></div>
-<div>멤버정보</div>
-멤버정보
+<div class="container">
 
-{{memberInfo.name}}
+	<div class="member_info">
+	<h2>회원 정보</h2>
+	
+	<table ng-model="memberInfo">
+		<tr>
+		<th>이름
+		</th>
+		<td class="td-sel">{{memberInfo.name}}
+		</td>
+		</tr>
+		<tr>
+		<th>아이디
+		</th>
+		<td class="td-sel">{{memberInfo.id}}
+		</td>
+	</tr>
+	<tr>
+	<th>비밀번호
+	</th>
+   <td class="td-sel">{{memberInfo.psword}}
+   </td>
+	</tr>
+	<tr>
+   <th>핸드폰번호
+   </th>
+   <td class="td-sel">{{memberInfo.hpnumber}}
+			</td>
+		</tr>
+		<tr>
+			<th>마일리지
+			</th>
+			<td>{{memberInfo.mileage}}
+			</td>
+		</tr>
+	</table>
+</div>
+</div>
+</section>
