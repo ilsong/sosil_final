@@ -11,7 +11,12 @@ app.controller('memberCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', 
 
 
         $scope.memberInfo={
-            name:"홍"
+            name:"홍",
+			id:"11",
+			psword:"1111",
+			hpnumber:"000-0000-0000",
+			mileage:"0pt"
+		
         };
 
     };
