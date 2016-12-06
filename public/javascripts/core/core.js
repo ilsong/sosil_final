@@ -73,6 +73,10 @@ app.config(function ($routeProvider) {
             controller:'itemCtrl',
             templateUrl:'/views/item_register.html'
         })
+        .when('/member/info', {
+            controller: 'memberCtrl',
+            templateUrl: '/views/member-info.html'
+        })
     .otherwise({
       redirectTo: '/'
     });
