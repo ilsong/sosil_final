@@ -61,6 +61,10 @@ app.config(function ($routeProvider) {
             controller: 'cartCtrl',
             templateUrl: '/views/cart.html'
         })
+        .when('/admin', {
+            controller: 'mainCtrl',
+            templateUrl: '/views/admin.html'
+        })
         .when('/checkout', {
             controller: 'mainCtrl',
             templateUrl: '/views/checkout.html'
