@@ -89,22 +89,23 @@
         <div class="checkout-options">
             <h3>주문자정보</h3>
             <p>Checkout options</p>
-            <ul class="nav">
-                <li>
-                    <label><input type="checkbox"> New User</label>
-                </li>
-                <li>
-                    <label><input type="checkbox"> Guest Checkout</label>
-                </li>
-                <li>
-                    <a href="" onclick="confirm('주문을 취소하시겠습니까?')"><i class="fa fa-times"></i>Cancel</a>
-                </li>
-            </ul>
+            <!--   <ul class="nav">
+                   <li>
+                       <label><input type="checkbox"> New User</label>
+                   </li>
+                   <li>
+                       <label><input type="checkbox"> Guest Checkout</label>
+                   </li>
+                   <li>
+                       <a href="" onclick="confirm('주문을 취소하시겠습니까?')"><i class="fa fa-times"></i>Cancel</a>
+                   </li>
+               </ul>-->
         </div>
         <!--/checkout-options-->
 
         <div class="register-req">
-            <p>Please use Register And Checkout to easily get access to your order history, or use Checkout as Guest</p>
+            <p>사용자 정보와 동일합니까?
+                <input type="checkbox"/></p>
         </div><!--/register-req-->
 
         <div class="shopper-informations">
@@ -115,13 +116,15 @@
                         <form>
                             <input type="text" placeholder="Display Name">
                             <input type="text" placeholder="User Name">
-                            <input type="password" placeholder="Password">
+                            <!--<input type="password" placeholder="Password">-->
                             <input type="password" placeholder="Confirm password">
                         </form>
                         <a class="btn btn-primary" href="">Get Quotes</a>
                         <a class="btn btn-primary" href="">Continue</a>
                     </div>
                 </div>
+
+
                 <div class="col-sm-5 clearfix">
                     <div class="bill-to">
                         <p>Bill To</p>
@@ -171,57 +174,45 @@
                     </div>
                 </div>
                 <div class="col-sm-4">
-                    <div class="order-message">
-                        <p>Shipping Order</p>
-                        <textarea name="message" placeholder="Notes about your order, Special Notes for Delivery"
-                                  rows="16"></textarea>
-                        <label><input type="checkbox"> Shipping to bill address</label>
+                    <div class="bill-to">
+                        <p>결제 정보</p>
+                        <div class="form-three">
+                            <form>
+                                <select ng-model="check.payment" ng-init="check.payment='bank'">
+                                    <option value="bank">계좌이체</option>
+                                    <option value="credit">신용카드</option>
+                                </select>
+                            </form>
+
+                            <form ng-if="check.payment=='bank'">
+                                <select>
+                                    <option>신한은행</option>
+                                    <option>국민은행</option>
+                                    <option>우리은행</option>
+                                </select>
+                                <input type="text" placeholder="계좌번호"/>
+                                <input type="text" placeholder="계좌주"/>
+                                <input type="password" placeholder="비밀번호"/>
+                            </form>
+
+                            <form ng-if="check.payment=='credit'">
+                                <select>
+                                    <option>비씨</option>
+                                    <option>신한</option>
+                                    <option>우리</option>
+                                </select>
+                                <input type="text" placeholder="카드번호"/>
+                                <input type="text" placeholder="유효일자"/>
+                                <input type="text" placeholder="csv"/>
+                            </form>
+
+                            <input type="checkbox">전체 약관에 동의합니다<br>
+                            <a class="btn btn-primary" href="">결제하기</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-
-        <br>
-        <hr>
-        <div class="shopper-informations">
-            <div class="bill-to">
-                <p>결제 정보</p>
-                <div>
-
-					<span>
-						<label><input type="checkbox"> Direct Bank Transfer</label>
-					</span>
-                    <span>
-						<label><input type="checkbox"> Credit Card</label>
-					</span>
-                    <!--	<span>
-                            <label><input type="checkbox"> Paypal</label>
-                        </span>-->
-                </div>
-
-
-                <div class="shopper-info">
-
-
-
-                            <form>
-                                <span>신용카드</span>
-                                <input type="text"/>
-                                <input type="text"/>
-                                <input type="text"/>
-                                <input type="text"/>
-                            </form>
-
-
-                </div>
-
-
-
-            </div>
-        </div>
-
-
     </div>
 </section> <!--/#cart_items-->
-
