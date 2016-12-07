@@ -10,7 +10,7 @@ function loadUser(req,res,next) {
     next();
   }
   else
-    res.redirect('/');
+    res.redirect('/main#/');
 }
 
 // 로그인
@@ -18,7 +18,7 @@ router.post('/login', function(req, res, next) {
 	models.Member.findOne({ // 유저 검색
 		where: {
 			mb_id: req.body.mb_id,
-			mb_pw: sha256(req.body.mb_pw)
+			mb_pw: req.body.mb_pw
 		}
 	}).then(function(member) {
 		if (member !== null) {

@@ -1,6 +1,4 @@
-
-	
-	<section id="form"><!--form-->
+<section id="form"><!--form-->
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-4 col-sm-offset-1">
@@ -24,8 +22,7 @@
 							<input type="text" name="mb_id" placeholder="ID"/>
 							<input type="password" name="mb_pw" placeholder="Password"/>
 							<input type="tel" name="mb_pn" placeholder="010-xxxx-xxxx" pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}" />
-							<br>
-							<input type="checkbox" id="check_agree"/>약관동의</input>
+							<input type="checkbox" id="check_agree" style="width:15px;height:15px;display: inline;"/>약관동의</input>
 							<button class="btn btn-default" onclick="signup()">가입</button>
 						</form>
 					</div><!--/sign up form-->
@@ -35,6 +32,7 @@
 	</section><!--/form-->
 	
 	<script src="/assets/js/jquery.js"></script>
+
 	<script type="text/javascript">
 		function login() {
 			$("#login-form").submit(function(event) {

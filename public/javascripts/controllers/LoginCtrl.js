@@ -1,9 +1,4 @@
-/*
-* @author : 박한나 yu4763
-* @summary :
-*A controller which is used in URL '/login', '/registry', and '/finding'.
-* LoginCtrl controlls variable and function for login page, registry page, and finding ID & PW page.
-*/
+
 
 app.controller('loginCtrl', ['$rootScope', '$scope', '$http', '$cookies', '$location', function($rootScope, $scope, $http, $cookies, $location){
     $scope.registrySubmit = function(){
