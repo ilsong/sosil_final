@@ -23,16 +23,12 @@ router.post('/login', function(req, res, next) {
 	}).then(function(member) {
 		if (member !== null) {
 			req.session.member = member.dataValues; // 세션 추가 등록
-			/*  req.session.user.time = new Date();
+			/*req.session.user.time = new Date();
 			req.session.user.ip = req.connection.remoteAddress;*/
 			delete req.session.member.mb_pw; //세션에서 password 정보 삭제
-			res.send({
-				result: true
-			});
+			res.send(req.session.member);
 		} else {
-			res.send({
-				result: false 
-			});
+			res.send(false);
 		}
 	});
 });
@@ -47,37 +43,34 @@ router.get('/logout', function(req, res, next) {
 });
 
 router.get('/getSession', function(req, res, next) {
-    res.send(req.session.member);
-    //내 세션을 전달하는 부분
+	res.send(req.session.member);
+	//내 세션을 전달하는 부분
 });
 
 // Create
 router.post('/register', function(req, res) {
-	console.log(req.body);
 	models.Member.findOne({
 		where: {
 			mb_id: req.body.mb_id
 		}
 	}).then(function(user){
-		if (user === null) {
+		if (user == null) {
 			req.body.mb_pw = sha256(req.body.mb_pw);
 			models.Member.create(req.body).then(function(member) {
 				/*생성 완료 후 바로 세션 등록*/
 				//회원 가입 후 바로 로그인 되는 부분 **
 				if (member !== null) {
 					req.session.member = member.dataValues;
-					req.session.member.time = new Date();
-					req.session.member.ip = req.connection.remoteAddress;
+					/*req.session.member.time = new Date();
+					req.session.member.ip = req.connection.remoteAddress;*/
 					delete req.session.member.mb_pw;
 					res.send(req.session.member);
 				}
 			});
 		}
 		else {
-			res.send({"result": "alreadyExist"});
+			res.send(false);
 		}
-	}).catch(function(error){
-		res.send({ emailConflict: true });
 	});
 });
 

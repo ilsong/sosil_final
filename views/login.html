@@ -9,7 +9,6 @@
 						<form id="login-form">
 							<input type="text" placeholder="ID" name="mb_id" />
 							<input type="password" placeholder="Password" name="mb_pw" />
-
 							<button class="btn btn-default" onclick="login()">로그인</button>
 						</form>
 					</div><!--/login form-->
@@ -20,13 +19,14 @@
 				<div class="col-sm-4">
 					<div class="signup-form"><!--sign up form-->
 						<h2>회원가입</h2>
-						<form action="/member/register" method="post" id="signup-form">
+						<form id="signup-form">
 							<input type="text" name="mb_name" placeholder="Name"/>
 							<input type="text" name="mb_id" placeholder="ID"/>
 							<input type="password" name="mb_pw" placeholder="Password"/>
-							<input type="tel" placeholder="010-xxxx-xxxx"/>
+							<input type="tel" name="mb_pn" placeholder="010-xxxx-xxxx" pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}" />
 							<br>
-							<input type="checkbox"/>약관동의</input><button type="submit" class="btn btn-default">가입</button>
+							<input type="checkbox" id="check_agree"/>약관동의</input>
+							<button class="btn btn-default" onclick="signup()">가입</button>
 						</form>
 					</div><!--/sign up form-->
 				</div>
@@ -38,18 +38,55 @@
 	<script type="text/javascript">
 		function login() {
 			$("#login-form").submit(function(event) {
+				event.preventDefault();
 				$.ajax({
 					type: "POST",
 					url: "/member/login",
 					data: $(this).serialize(),
 					success: function(data) {
-						if(data.result)
+						if(data)
 							location.href='/';
 						else
 							alert('아이디 혹은 비밀번호를 확인해주세요');
 					}
-				})
-				event.preventDefault();
-			})
+				});
+			});
+		}
+
+		function signup() {
+			var data = $("#signup-form").serialize();
+			data = data.split('&');
+
+			if(!$("#check_agree").prop('checked')) {
+				alert("약관동의를 해주세요!");
+				return;
+			}
+
+			if(data[0].split('=')[1] == "")
+				alert("이름을 입력해주세요!");
+			else if(data[1].split('=')[1] == "")
+				alert("아이디를 입력해주세요!");
+			else if(data[2].split('=')[1] == "")
+				alert("비밀번호를 입력해주세요!");
+			else if(data[3].split('=')[1] == "")
+				alert("전화번호를 입력해주세요!");
+			else {
+				$("#signup-form").submit(function(event) {
+					event.preventDefault();
+					$.ajax({
+						type: "POST",
+						url: "/member/register",
+						data: $(this).serialize(),
+						success: function(data) {
+							if(data) {
+								alert("환영합니다! 회원가입되었습니다.");
+								location.href='/';
+							}
+							else
+								alert('이미 존재하는 아이디입니다!');
+						}
+					});
+				});
+			}
 		}
 	</script>
