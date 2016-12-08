@@ -1,5 +1,5 @@
 
-app.controller('mainCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', function($scope, $http, $cookies, $sce, $window){
+app.controller('mainCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', '$localStorage', function($scope, $http, $cookies, $sce, $window){
     $scope.checkbox = [];
     $scope.initList=function(){
         $scope.itemList=[
@@ -111,4 +111,19 @@ app.controller('mainCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', fu
         $cookies.putObject('popup', popupCookie);
         angular.element('#popup'+popup_idx).hide();
     }*/
+
+    $scope.addCart = function(item){
+        $http.post('/cart/',{it_id:item.id}).then(function(data){
+            if(data.data.error == false){
+                alert('상품을 장바구니에 담았습니다.');
+            }
+            else{
+                if(data.data.msg == 'doLogin')
+                    $location.path("main#/login");
+            }
+        });
+        $scope.cartList.push(item);
+    };
+
+
 }]);

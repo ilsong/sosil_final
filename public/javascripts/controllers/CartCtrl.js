@@ -87,17 +87,7 @@ app.controller('cartCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', fu
 
 
     };
-    $scope.addCart = function(itemId){
-        $http.post('/rest/cart/',{ItemId:itemId}).then(function(data){
-            if(data.data.error == false){
-                alert('상품을 장바구니에 담았습니다.');
-            }
-            else{
-                if(data.data.msg == 'doLogin')
-                    $location.path("#/signin");
-            }
-        });
-    };
+
 
 
 

@@ -3,13 +3,15 @@ module.exports = function(sequelize, DataTypes) {
         // "User"부분 - 어떤 객체인지
         mb_no: {
             type: DataTypes.INTEGER,
+            autoIncrement: true,
+            // defaultValue: 1,
             primaryKey:true,
             unique: true,
             allowNull: false,
             comment: "유저 id"
         },
         mb_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             unique: true,
             allowNull: false,
             comment: "유저 id"
@@ -41,6 +43,10 @@ module.exports = function(sequelize, DataTypes) {
         tableName: 'member',
         comment: "사용자",
         classMethods: {
+
+            associate: function(models) {
+                Member.hasMany(models.Checkout, {foreignKey: 'mb_no',onDelete:'CASCADE', onUpdate:'CASCADE'});
+            }
         }
         //classMethods: relationShip 부분
     });

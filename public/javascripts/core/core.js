@@ -5,6 +5,7 @@ var app = angular.module('mainApp', [
     'ngFileUpload',   
     'ngCookies', 
     'ngSanitize',
+    'ngStorage',
     'com.2fdevs.videogular',
     'com.2fdevs.videogular.plugins.controls',
     'com.2fdevs.videogular.plugins.overlayplay',

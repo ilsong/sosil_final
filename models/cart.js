@@ -5,20 +5,18 @@
 module.exports = function(sequelize, DataTypes) {
     var Cart = sequelize.define("Cart", {
         // "User"부분 - 어떤 객체인지
-        ck_no: {
+      /*  ck_no: {
             type: DataTypes.INTEGER,
-            // unique: true,
-            primaryKey:true,
             allowNull: false,
             comment: "장바구니 id"
         },
         it_no: {
             type: DataTypes.INTEGER,
-            primaryKey:true,
+            // primaryKey:true,
             // unique: true,
             allowNull: false,
             comment: "아이템 id"
-        },
+        },*/
         ct_total: {
             type: DataTypes.INTEGER,
             // unique: true,
@@ -29,11 +27,23 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: false,
             comment: "장바구니 총 적립포인트"
+        },
+        mb_no: {
+            type: DataTypes.INTEGER,
+            unique: true,
+            allowNull: false,
+            comment: "유저 일련번호"
+        },
+        ct_num:{
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            comment: "물품개수"
         }
     }, {
-        tableName: 'Cart',
+        tableName: 'cart',
         comment: "장바구니",
         classMethods: {
+
         }
         //classMethods: relationShip 부분
     });

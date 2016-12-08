@@ -6,8 +6,11 @@ module.exports = function(sequelize, DataTypes) {
         // "User"부분 - 어떤 객체인지
         it_no: {
             type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey:true,
             unique: true,
             allowNull: false,
+            // defaultValue: 1,
             comment: "아이템 id"
         },
         it_amount: {
@@ -41,6 +44,9 @@ module.exports = function(sequelize, DataTypes) {
         tableName: 'item',
         comment: "아이템",
         classMethods: {
+            associate: function(models) {
+                Item.hasMany(models.Cart, {foreignKey: 'it_no',onDelete:'CASCADE', onUpdate:'CASCADE'});
+            }
         }
         //classMethods: relationShip 부분
     });

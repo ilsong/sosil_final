@@ -8,6 +8,7 @@ module.exports = function(sequelize, DataTypes) {
         ck_no: {
             type: DataTypes.INTEGER,
             primaryKey:true,
+            // autoIncrement: true,
             unique: true,
             allowNull: false,
             comment: "장바구니 id"
@@ -32,6 +33,9 @@ module.exports = function(sequelize, DataTypes) {
         tableName: 'ckeckout',
         comment: "결제",
         classMethods: {
+            associate: function(models) {
+                Checkout.hasMany(models.Cart, {foreignKey: 'ck_no',onDelete:'CASCADE', onUpdate:'CASCADE'});
+            }
         }
         //classMethods: relationShip 부분
     });
