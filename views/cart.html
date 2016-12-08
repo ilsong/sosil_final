@@ -1,3 +1,4 @@
+<!--
 <div ng-init="initList()"></div>
 	<section id="cart_items">
 		<div class="container">
@@ -11,14 +12,14 @@
 				<h2 class="heading">Step1</h2>
 			</div>
 
-			<!-- cart -->
+			&lt;!&ndash; cart &ndash;&gt;
 			<div class="table-responsive cart_info">
 				<table class="table table-condensed">
 					<thead>
 						<tr class="cart_menu">
 							<td class="ckbox">
 								<input type="checkbox"  ng-model="checkedAll" ng-change="checkAll(checkedAll)" id="all_check" name="all_check"/>
-							</td> <!-- all_check-->
+							</td> &lt;!&ndash; all_check&ndash;&gt;
 							<td class="image">상품</td>
 							<td class="description"></td>
 							<td class="price">가격</td>
@@ -60,13 +61,13 @@
 				</table>
 			</div>
 		</div>
-	</section> <!--/#cart_items-->
+	</section> &lt;!&ndash;/#cart_items&ndash;&gt;
 
 	<section id="do_action">
 		<div class="container">
 			<div class="heading">
 				<h3>선택하신 물품을 주문하시겠습니까?</h3>
-				<!--<p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>-->
+				&lt;!&ndash;<p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>&ndash;&gt;
 			</div>
 			<div class="row">
 
@@ -79,23 +80,259 @@
 							<li>Total <span>$61</span></li>
 						</ul>
 							<a class="btn btn-default update" ng-click="checkoutSelect()">Check Out</a>
-							<!--<a class="btn btn-default check_out" href="/main#/checkout">Check Out</a>-->
+							&lt;!&ndash;<a class="btn btn-default check_out" href="/main#/checkout">Check Out</a>&ndash;&gt;
 					</div>
 				</div>
 			</div>
 		</div>
-	</section><!--/#do_action-->
+	</section>&lt;!&ndash;/#do_action&ndash;&gt;
 
 
 
 
-	<!--original scripts-->
+	&lt;!&ndash;original scripts&ndash;&gt;
 	<script src="/assets/js/jquery.js"></script>
 	<script src="/assets/js/bootstrap.min.js"></script>
 	<script src="/assets/js/jquery.scrollUp.min.js"></script>
 	<script src="/assets/js/price-range.js"></script>
 	<script src="/assets/js/jquery.prettyPhoto.js"></script>
 	<script src="/assets/js/main.js"></script>
+-->
 
 
 
+<div ng-init="initList()"></div>
+
+<section id="cart_items">
+	<div class="container">
+		<div class="breadcrumbs">
+			<ol class="breadcrumb">
+				<li><a href="#">Home</a></li>
+				<li class="active">Check out</li>
+			</ol>
+		</div><!--/breadcrums-->
+
+		<div class="step-one">
+			<h2 class="heading">Step1</h2>
+		</div>
+
+
+		<div class="review-payment">
+			<div class="checkout-options">
+				<h3>장바구니</h3>
+				<p>Cart items</p>
+			</div>
+		</div>
+
+		<div class="table-responsive cart_info">
+			<table class="table table-condensed">
+				<thead>
+				<tr class="cart_menu">
+					<td class="ckbox">
+						<input type="checkbox"  ng-model="checkedAll" ng-change="checkAll(checkedAll)" id="all_check" name="all_check"/>
+					</td> <!-- all_check-->
+					<td class="image">Item</td>
+					<td class="description"></td>
+					<td class="price">Price</td>
+					<td class="quantity">Quantity</td>
+					<td class="total">Total</td>
+					<td></td>
+				</tr>
+				</thead>
+				<tbody>
+
+				<tr ng-repeat="cart in cartList">
+					<td class="ckbox">
+						<input type="checkbox" id="ck1" name="ck1" ng-change="checkItem(cart.id, cart.selected)" ng-model="cart.selected"  />
+					</td>
+					<td class="cart_product">
+						<a href="/main#/item/{{cart.id}}"><img src="{{cart.img}}" alt=""></a>
+					</td>
+					<td class="cart_description">
+						<h4><a href="">{{cart.name}}</a></h4>
+						<p>Web ID: {{cart.code}}</p>
+					</td>
+					<td class="cart_price">
+						<p>{{cart.price}}원</p>
+					</td>
+					<td class="cart_quantity">
+						<div class="cart_quantity_button">
+							<a class="cart_quantity_up" href="" ng-click="cart.quantity=cart.quantity+1"> + </a>
+							<input class="cart_quantity_input" type="text" name="quantity" value="{{cart.quantity}}"
+								   autocomplete="off" size="2">
+							<a class="cart_quantity_down" href="" ng-click="cart.quantity=cart.quantity-1"> - </a>
+						</div>
+					</td>
+					<td class="cart_total">
+						<p class="cart_total_price">{{cart.price * cart.quantity}}원</p>
+					</td>
+					<td class="cart_delete">
+						<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4">&nbsp;</td>
+					<td colspan="2">
+						<table class="table table-condensed total-result">
+							<tr>
+								<td>Cart Sub Total</td>
+								<td>$59</td>
+							</tr>
+							<tr>
+								<td>Exo Tax</td>
+								<td>$2</td>
+							</tr>
+							<tr class="shipping-cost">
+								<td>Shipping Cost</td>
+								<td>Free</td>
+							</tr>
+							<tr>
+								<td>Total</td>
+								<td><span>$61</span></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<!--<a class="btn btn-default update" ng-click="ifcheckout()">Check Out</a>-->
+
+
+		<div class="step-one">
+			<h2 class="heading">Step2</h2>
+		</div>
+
+		<div class="checkout-options">
+
+
+			<h3>주문자정보</h3>
+			<p>Checkout options</p>
+			<!--   <ul class="nav">
+                   <li>
+                       <label><input type="checkbox"> New User</label>
+                   </li>
+                   <li>
+                       <label><input type="checkbox"> Guest Checkout</label>
+                   </li>
+                   <li>
+                       <a href="" onclick="confirm('주문을 취소하시겠습니까?')"><i class="fa fa-times"></i>Cancel</a>
+                   </li>
+               </ul>-->
+		</div>
+		<!--/checkout-options-->
+
+		<div class="register-req">
+			<p>사용자 정보와 동일합니까?
+				<input type="checkbox"/></p>
+		</div><!--/register-req-->
+
+		<div class="shopper-informations">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="shopper-info">
+						<p>Shopper Information</p>
+						<form>
+							<input type="text" placeholder="Display Name">
+							<input type="text" placeholder="User Name">
+							<!--<input type="password" placeholder="Password">-->
+							<input type="password" placeholder="Confirm password">
+						</form>
+						<a class="btn btn-primary" href="">Get Quotes</a>
+						<a class="btn btn-primary" href="">Continue</a>
+					</div>
+				</div>
+
+
+				<div class="col-sm-5 clearfix">
+					<div class="bill-to">
+						<p>Bill To</p>
+						<div class="form-one">
+							<form>
+								<input type="text" placeholder="Company Name">
+								<input type="text" placeholder="Email*">
+								<input type="text" placeholder="Title">
+								<input type="text" placeholder="First Name *">
+								<input type="text" placeholder="Middle Name">
+								<input type="text" placeholder="Last Name *">
+								<input type="text" placeholder="Address 1 *">
+								<input type="text" placeholder="Address 2">
+							</form>
+						</div>
+						<div class="form-two">
+							<form>
+								<input type="text" placeholder="Zip / Postal Code *">
+								<select>
+									<option>-- Country --</option>
+									<option>United States</option>
+									<option>Bangladesh</option>
+									<option>UK</option>
+									<option>India</option>
+									<option>Pakistan</option>
+									<option>Ucrane</option>
+									<option>Canada</option>
+									<option>Dubai</option>
+								</select>
+								<select>
+									<option>-- State / Province / Region --</option>
+									<option>United States</option>
+									<option>Bangladesh</option>
+									<option>UK</option>
+									<option>India</option>
+									<option>Pakistan</option>
+									<option>Ucrane</option>
+									<option>Canada</option>
+									<option>Dubai</option>
+								</select>
+								<input type="password" placeholder="Confirm password">
+								<input type="text" placeholder="Phone *">
+								<input type="text" placeholder="Mobile Phone">
+								<input type="text" placeholder="Fax">
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="bill-to">
+						<p>결제 정보</p>
+						<div class="form-three">
+							<form>
+								<select ng-model="check.payment" ng-init="check.payment='bank'">
+									<option value="bank">계좌이체</option>
+									<option value="credit">신용카드</option>
+								</select>
+							</form>
+
+							<form ng-if="check.payment=='bank'">
+								<select>
+									<option>신한은행</option>
+									<option>국민은행</option>
+									<option>우리은행</option>
+								</select>
+								<input type="text" placeholder="계좌번호"/>
+								<input type="text" placeholder="계좌주"/>
+								<input type="password" placeholder="비밀번호"/>
+							</form>
+
+							<form ng-if="check.payment=='credit'">
+								<select>
+									<option>비씨</option>
+									<option>신한</option>
+									<option>우리</option>
+								</select>
+								<input type="text" placeholder="카드번호"/>
+								<input type="text" placeholder="유효일자"/>
+								<input type="text" placeholder="csv"/>
+							</form>
+
+							<input type="checkbox">전체 약관에 동의합니다<br>
+							<a class="btn btn-primary" href="">결제하기</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</section> <!--/#cart_items-->

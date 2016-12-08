@@ -1,6 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
     var Member = sequelize.define("Member", {
         // "User"부분 - 어떤 객체인지
+        mb_no: {
+            type: DataTypes.INTEGER,
+            primaryKey:true,
+            unique: true,
+            allowNull: false,
+            comment: "유저 id"
+        },
         mb_id: {
             type: DataTypes.INTEGER,
             unique: true,
@@ -12,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             comment: "유저 PW"
         }
-        /*,
+        ,
         mb_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -29,7 +36,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             defaultValue: 0,
             comment: "유저 마일리지"
-        }*/
+        }
     }, {
         tableName: 'member',
         comment: "사용자",

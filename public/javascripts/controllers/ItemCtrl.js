@@ -3,6 +3,48 @@
  */
 
 app.controller('itemCtrl', ['$scope', '$http','Upload', '$cookies', '$sce', '$window', function($scope, $http,Upload, $cookies, $sce, $window) {
+    $scope.initList=function(){
+        $scope.itemList=[
+            {
+                id:1,
+                img:"/assets/images/home/recommend1.jpg",
+                price:56000,
+                name:"Easy Polo Black Edition"
+            },{
+                id:2,
+                img:"/assets/images/home/recommend2.jpg",
+                price:56000,
+                name:"Easy Polo Black Edition"
+
+            },{
+                id:3,
+                img:"/assets/images/home/recommend3.jpg",
+                price:56000,
+                name:"Easy Polo Black Edition"
+
+            },{
+                id:4,
+                img:"/assets/images/home/recommend4.jpg",
+                price:56000,
+                name:"Easy Polo Black Edition"
+
+            },{
+                id:5,
+                img:"/assets/images/home/recommend5.jpg",
+                price:56000,
+                name:"Easy Polo Black Edition"
+
+            },
+            {
+                id:6,
+                img:"/assets/images/home/recommend6.jpg",
+                price:56000,
+                name:"Easy Polo Black Edition"
+            }
+        ];
+    }
+
+
     // $scope.checkbox = [];
 
     /*$scope.initItem = function () {
@@ -57,6 +99,8 @@ app.controller('itemCtrl', ['$scope', '$http','Upload', '$cookies', '$sce', '$wi
         $scope.categoryId = $routeParams.id;
 
     };*/
+
+
 
     $scope.uploadPost=function(file){
         if(file != null){

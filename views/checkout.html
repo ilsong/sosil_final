@@ -15,30 +15,29 @@
 
 
         <div class="review-payment">
-            <h2>Review & Payment</h2>
+            <div class="checkout-options">
+                <h3>물품확인</h3>
+                <p>Review Cart</p>
+            </div>
         </div>
 
         <div class="table-responsive cart_info">
             <table class="table table-condensed">
                 <thead>
                 <tr class="cart_menu">
-                    <td class="ckbox">
-                        <input type="checkbox"  ng-model="checkedAll" ng-change="checkAll(checkedAll)" id="all_check" name="all_check"/>
-                    </td> <!-- all_check-->
-                    <td class="image">Item</td>
+
+                    <td class="image">물품</td>
                     <td class="description"></td>
-                    <td class="price">Price</td>
-                    <td class="quantity">Quantity</td>
-                    <td class="total">Total</td>
-                    <td></td>
+                    <td class="price">가격</td>
+                    <td class="quantity">수량</td>
+                    <td class="total">총가격</td>
+                    <!--<td></td>-->
                 </tr>
                 </thead>
                 <tbody>
 
                 <tr ng-repeat="check in checkList">
-                    <td class="ckbox">
-                        <input type="checkbox" id="ck1" name="ck1" ng-change="checkItem(cart.id, cart.selected)" ng-model="cart.selected"  />
-                    </td>
+
                     <td class="cart_product">
                         <a href="/main#/item/{{check.id}}"><img src="{{check.img}}" alt=""></a>
                     </td>
@@ -51,18 +50,19 @@
                     </td>
                     <td class="cart_quantity">
                         <div class="cart_quantity_button">
-                            <a class="cart_quantity_up" href="" ng-click="check.quantity=check.quantity+1"> + </a>
-                            <input class="cart_quantity_input" type="text" name="quantity" value="{{check.quantity}}"
-                                   autocomplete="off" size="2">
-                            <a class="cart_quantity_down" href="" ng-click="check.quantity=check.quantity-1"> - </a>
+                            <!--<a class="cart_quantity_up" href="" ng-click="check.quantity=check.quantity+1"> + </a>-->
+                            <!--<input class="cart_quantity_input" type="text" name="quantity" value="{{check.quantity}}"-->
+                                   <!--autocomplete="off" size="2">-->
+                            {{check.quantity}}
+                            <!--<a class="cart_quantity_down" href="" ng-click="check.quantity=check.quantity-1"> - </a>-->
                         </div>
                     </td>
                     <td class="cart_total">
                         <p class="cart_total_price">{{check.price * check.quantity}}원</p>
                     </td>
-                    <td class="cart_delete">
+                  <!--  <td class="cart_delete">
                         <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                    </td>
+                    </td>-->
                 </tr>
                 <tr>
                     <td colspan="4">&nbsp;</td>
