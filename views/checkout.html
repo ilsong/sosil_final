@@ -1,4 +1,4 @@
-<div ng-init="initCheck()"></div>
+<div ng-init="initList()"></div>
 
 <section id="cart_items">
     <div class="container">
@@ -10,7 +10,7 @@
         </div><!--/breadcrums-->
 
         <div class="step-one">
-            <h2 class="heading">Step2</h2>
+            <h2 class="heading">Step1</h2>
         </div>
 
 
@@ -22,6 +22,9 @@
             <table class="table table-condensed">
                 <thead>
                 <tr class="cart_menu">
+                    <td class="ckbox">
+                        <input type="checkbox"  ng-model="checkedAll" ng-change="checkAll(checkedAll)" id="all_check" name="all_check"/>
+                    </td> <!-- all_check-->
                     <td class="image">Item</td>
                     <td class="description"></td>
                     <td class="price">Price</td>
@@ -33,6 +36,9 @@
                 <tbody>
 
                 <tr ng-repeat="check in checkList">
+                    <td class="ckbox">
+                        <input type="checkbox" id="ck1" name="ck1" ng-change="checkItem(cart.id, cart.selected)" ng-model="cart.selected"  />
+                    </td>
                     <td class="cart_product">
                         <a href="/main#/item/{{check.id}}"><img src="{{check.img}}" alt=""></a>
                     </td>
@@ -86,7 +92,13 @@
         </div>
 
 
+        <div class="step-one">
+            <h2 class="heading">Step2</h2>
+        </div>
+
         <div class="checkout-options">
+
+
             <h3>주문자정보</h3>
             <p>Checkout options</p>
             <!--   <ul class="nav">

@@ -4,7 +4,7 @@
 app.controller('checkCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', function($scope, $http, $cookies, $sce, $window) {
     // $scope.checkbox = [];
 
-    $scope.initCheck = function () {
+    $scope.initList = function () {
 
 
 

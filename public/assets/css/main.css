@@ -68,7 +68,7 @@ a#scrollUp i{
 **************************/
 
 .header_top {
-  background: none repeat scroll 0 0 #F0F0E9;
+  background: none repeat scroll 0 0 #F7F7F7;
 }
 
 .contactinfo ul li:first-child{
@@ -254,7 +254,7 @@ a#scrollUp i{
 }
 
 .search_box input {
-  background: #F0F0E9;
+  background: #F7F7F7;
   border: medium none;
   color: #B2B2B2;
   font-family: 'roboto';
@@ -272,7 +272,7 @@ a#scrollUp i{
 
 /*  Dropdown menu*/
 
-.navbar-header 
+.navbar-header
 .navbar-toggle .icon-bar {
     background-color: #fff;
 }
@@ -325,7 +325,7 @@ ul.sub-menu {
 }
 
 .fa-angle-down{
-  padding-left: 5px; 
+  padding-left: 5px;
 }
 
 @-webkit-keyframes fadeInUp {
@@ -341,13 +341,13 @@ ul.sub-menu {
     transform: translateY(0);
   }
 }
-  
+
 /*************************
 *******Footer CSS******
 **************************/
 
 #footer {
-  /*background: #F0F0E9;*/
+  /*background: #F7F7F7;*/
   background: white;
 }
 
@@ -533,7 +533,7 @@ ul.sub-menu {
   font-size: 20px;
 }
 
-.searchform  button:hover, 
+.searchform  button:hover,
 .searchform  button:focus{
 	background-color:pink;
 }
@@ -1123,7 +1123,7 @@ h2.title {
 }
 
 .pagination  li  a, .pagination  li  span {
-  background-color: #f0f0e9;
+  background-color: #F7F7F7;
   border: 0;
   float: left;
   line-height: 1.42857;
@@ -1347,7 +1347,7 @@ h2.title {
 }
 
 #reviews form span input {
-  background:#F0F0E9;
+  background:#F7F7F7;
   border: 0 none;
   color: #A6A6A1;
   font-family: 'Roboto', sans-serif;
@@ -1361,7 +1361,7 @@ h2.title {
 }
 
 #reviews textarea {
-  background: #F0F0E9;
+  background: #F7F7F7;
   border: medium none;
   color: #A6A6A1;
   height: 195px;
@@ -1452,7 +1452,7 @@ h2.title {
 
 
 .login-form form input, .signup-form form input {
-  background: #F0F0E9;
+  background: #F7F7F7;
   border: medium none;
   color: #696763;
   display: block;
@@ -1633,7 +1633,7 @@ h2.title {
 }
 
 .cart_quantity_button a {
-  background:#F0F0E9;
+  background:#F7F7F7;
   color: #696763;
   display: inline-block;
   font-size: 16px;
@@ -1651,7 +1651,7 @@ h2.title {
   font-size: 16px;
   text-align: center;
   font-family: 'Roboto',sans-serif;
-  
+
 }
 
 
@@ -1663,7 +1663,7 @@ h2.title {
 
 
 .cart_delete a {
-  background:#F0F0E9;
+  background:#F7F7F7;
   color: #FFFFFF;
   padding: 5px 7px;
   font-size: 16px
@@ -1744,7 +1744,7 @@ h2.title {
 
 .user_info .single_field.zip-field input {
   background: transparent;
-  border: 1px solid#F0F0E9
+  border: 1px solid#F7F7F7
 }
 
 .user_info > li {
@@ -1756,7 +1756,7 @@ h2.title {
 }
 
 .user_info input, select, textarea {
-  background: #F0F0E9;
+  background: #F7F7F7;
   border:0;
   color: #696763;
   padding: 5px;
@@ -1801,7 +1801,7 @@ h2.title {
 }
 
 .register-req, .step-one .heading {
-  background: none repeat scroll 0 0 #F0F0E9;
+  background: none repeat scroll 0 0 #F7F7F7;
   color: #363432;
   font-size: 20px;
   margin-bottom: 35px;
@@ -1877,8 +1877,8 @@ h2.title {
 
 
 
-.shopper-info p, 
-.bill-to p, 
+.shopper-info p,
+.bill-to p,
 .order-message p {
   color: #696763;
   font-size: 20px;
@@ -1905,11 +1905,11 @@ h2.title {
 }
 
 
-.shopper-info > form > input, 
-.form-two > form > select, 
-.form-two > form > input, 
+.shopper-info > form > input,
+.form-two > form > select,
+.form-two > form > input,
 .form-one > form > input {
-  background:#F0F0E9;
+  background:#F7F7F7;
   border: 0 none;
   margin-bottom:10px;
   padding: 10px;
@@ -1930,7 +1930,7 @@ h2.title {
 
 .form-three > form > select,
 .form-three > form > input{
-  background:#F0F0E9;
+  background:#F7F7F7;
   border: 0 none;
   margin-bottom:10px;
   padding: 10px;
@@ -1984,27 +1984,27 @@ h2.title {
   margin-right: 30px;
 }
 
-#cart_items .cart_info 
+#cart_items .cart_info
 .table.table-condensed.total-result {
   margin-bottom: 10px;
   margin-top: 35px;
   color: #696763
 }
 
-#cart_items .cart_info 
+#cart_items .cart_info
 .table.table-condensed.total-result tr {
   border-bottom: 0
 }
 
-#cart_items .cart_info 
+#cart_items .cart_info
 .table.table-condensed.total-result span {
   color: pink;
   font-weight: 700;
   font-size: 16px
 }
 
-#cart_items .cart_info 
-.table.table-condensed.total-result 
+#cart_items .cart_info
+.table.table-condensed.total-result
 .shipping-cost {
   border-bottom: 1px solid #F7F7F0;
 }
@@ -2018,7 +2018,7 @@ h2.title {
 
 
 
-.blog-post-area 
+.blog-post-area
 .single-blog-post h3 {
   color: #696763;
   font-size: 16px;
@@ -2031,34 +2031,34 @@ h2.title {
 .single-blog-post > a {
 }
 
-.blog-post-area 
+.blog-post-area
 .single-blog-post a img {
   border: 1px solid #F7F7F0;
   width: 100%;
   margin-bottom: 30px
 }
 
-.blog-post-area  
+.blog-post-area
 .single-blog-post p {
   color: #363432
 }
 
-.blog-post-area 
+.blog-post-area
 .post-meta {
   display: block;
   margin-bottom: 25px;
   overflow: hidden;
 }
 
-.blog-post-area 
+.blog-post-area
 .post-meta ul {
   padding:0;
   display: inline;
 }
 
-.blog-post-area 
+.blog-post-area
 .post-meta ul li {
-  background:#F0F0E9;
+  background:#F7F7F7;
   float: left;
   margin-right: 10px;
   padding: 0 5px;
@@ -2067,7 +2067,7 @@ h2.title {
   position: relative;
 }
 
-.blog-post-area 
+.blog-post-area
 .post-meta ul li i {
   background:pink;
   color: #FFFFFF;
@@ -2077,7 +2077,7 @@ h2.title {
 }
 
 .sinlge-post-meta li i:after,
-.blog-post-area 
+.blog-post-area
 .post-meta ul li i:after {
   content: "";
   position: absolute;
@@ -2090,7 +2090,7 @@ h2.title {
   left:24px
 }
 
-.blog-post-area 
+.blog-post-area
 .post-meta ul span {
   float: right;
   color: pink
@@ -2105,8 +2105,8 @@ h2.title {
 }
 
 
-.blog-post-area  
-.single-blog-post 
+.blog-post-area
+.single-blog-post
 .btn-primary {
   background:pink;
   border: medium none;
@@ -2121,9 +2121,9 @@ h2.title {
   margin-top:45px
 }
 
-.pagination-area 
+.pagination-area
 .pagination li a {
-  background:#F0F0E9;
+  background:#F7F7F7;
   border: 0 none;
   border-radius: 0;
   color: #696763;
@@ -2131,9 +2131,9 @@ h2.title {
   padding: 4px 12px;
 }
 
-.pagination-area 
+.pagination-area
 .pagination li a:hover,
-.pagination-area 
+.pagination-area
 .pagination li .active {
   background:pink;
   color: #fff
@@ -2150,7 +2150,7 @@ h2.title {
 }
 
 .pager-area .pager li a {
-  background:#F0F0E9;
+  background:#F7F7F7;
   border: 0 none;
   border-radius: 0;
   color: #696763;
@@ -2161,7 +2161,7 @@ h2.title {
   width: 57px;
 }
 
-.pager-area 
+.pager-area
 .pager li a:hover {
   background: pink;
   color: #fff
@@ -2186,7 +2186,7 @@ h2.title {
 }
 
 
-.rating-area 
+.rating-area
 .ratings li i {
   color:#CCCCCC
 }
@@ -2198,8 +2198,8 @@ h2.title {
   text-transform: uppercase;
 }
 
-.rating-area 
-.ratings .color, 
+.rating-area
+.ratings .color,
 .rating-area .color {
   color: pink
 }
@@ -2225,7 +2225,7 @@ h2.title {
 }
 
 
-.commnets 
+.commnets
 .media-object {
   margin-right: 15px;
   width: 100%;
@@ -2241,8 +2241,8 @@ h2.title {
   margin-right: 22px
 }
 
-.commnets p, 
-.response-area p, 
+.commnets p,
+.response-area p,
 .replay-box p {
   font-size: 12px
 }
@@ -2271,7 +2271,7 @@ h2.title {
 }
 
 .blog-socials ul li {
-  
+
   float: left;
   height: 17px;
   margin-right: 5px;
@@ -2285,7 +2285,7 @@ h2.title {
   display: block;
   font-size: 10px;
   padding: 1px;
-  background:#F0F0E9;
+  background:#F7F7F7;
 }
 
 .blog-socials ul li a:hover {
@@ -2294,7 +2294,7 @@ h2.title {
 }
 
 
-.media-list .btn-primary, 
+.media-list .btn-primary,
 .commnets .btn-primary {
   background:#FC9A11;
   border: 0 none;
@@ -2342,7 +2342,7 @@ h2.title {
 
 
 .sinlge-post-meta li {
-  background:#F0F0E9;
+  background:#F7F7F7;
   color: #363432;
   float: left;
   font-size: 10px;

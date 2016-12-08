@@ -5,6 +5,34 @@
 app.controller('cartCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', function($scope, $http, $cookies, $sce, $window) {
     // $scope.checkbox = [];
 
+    $scope.initList=function(){
+        $scope.cartList=[
+            {
+                code:"code",
+                name:"Colorblock Scuba",
+                img:"/assets/images/cart/one.png",
+                price:59,
+                quantity:1
+            },
+            {
+                code:"1089772",
+                name:"Colorblock Scuba",
+                img:"/assets/images/cart/two.png",
+                price:59,
+                quantity:1
+            },
+            {
+                code:"1089772",
+                name:"Colorblock Scuba",
+                img:"/assets/images/cart/three.png",
+                price:59,
+                quantity:1
+            }
+
+        ];
+    };
+
+
     $scope.initCart = function () {
 
 
@@ -56,30 +84,7 @@ app.controller('cartCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', fu
 
         $scope.categoryId = $routeParams.id;*/
 
-     $scope.cartList=[
-         {
-             code:"code",
-             name:"Colorblock Scuba",
-             img:"/assets/images/cart/one.png",
-             price:59,
-             quantity:1
-         },
-         {
-             code:"1089772",
-             name:"Colorblock Scuba",
-             img:"/assets/images/cart/two.png",
-             price:59,
-             quantity:1
-         },
-         {
-             code:"1089772",
-             name:"Colorblock Scuba",
-             img:"/assets/images/cart/three.png",
-             price:59,
-             quantity:1
-         }
 
-     ];
 
     };
 
@@ -94,6 +99,50 @@ app.controller('cartCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', fu
     $scope.decrease = function (){
         $scope.quantity=-1;
     };
+
+    $scope.userChecked = [];
+
+    $scope.checkAll=function(checked){
+        $scope.userChecked = [];
+
+        angular.forEach($scope.cartList, function(value) {
+            value.selected = checked;
+            $scope.userChecked.push(value.id);
+        });
+
+        if (!checked) {
+            $scope.userChecked = [];
+        }
+    };
+
+    $scope.checkItem = function(id, checked) {
+        if (checked) {
+            $scope.userChecked.push(id);
+        } else {
+            $scope.userChecked.pop();
+        }
+    };
+
+    $scope.checkoutSelect=function(){
+
+        for(var arrIndex in $scope.userChecked){
+            var cartId = $scope.userChecked[arrIndex];
+
+            // $http.delete('/board/' + boardId);
+        };
+
+        $scope.cartList = $scope.cartList.filter(function(item){
+            return !item.selected;
+        });
+
+        $scope.userChecked = [];
+        alert("1");
+        $window.location.reload("/cart");
+        alert("2");
+
+    };
+
+
 
 
 

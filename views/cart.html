@@ -1,5 +1,4 @@
-
-<div ng-init="initCart()"></div>
+<div ng-init="initList()"></div>
 	<section id="cart_items">
 		<div class="container">
 			<div class="breadcrumbs">
@@ -31,11 +30,10 @@
 					<tbody ng-repeat="cart in cartList">
 						<tr>
 							<td class="ckbox">
-								<input type="checkbox" id="ck1" name="ck1" ng-model="" ng-change="" />
+								<input type="checkbox" id="ck1" name="ck1" ng-change="checkItem(cart.id, cart.selected)" ng-model="cart.selected"  />
 							</td>
 							<td class="cart_product">
 								<a href="/main#/cart/{{cart.id}}"><img src="{{cart.img}}" alt=""></a>
-
 							</td>
 							<td class="cart_description">
 								<h4><a href="">{{cart.name}}</a></h4>
@@ -58,66 +56,6 @@
 								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
 							</td>
 						</tr>
-
-
-
-
-					<!--	<tr>
-							<td class="ckbox">
-								<input type="checkbox" id="ck2" name="ck2"/>
-							</td>
-							<td class="cart_product">
-								<a href=""><img src="/assets/images/cart/two.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>$59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" ng-click="quantity2=quantity2+1"> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="{{quantity2}}" autocomplete="off" size="2">
-									<a class="cart_quantity_down" ng-click="quantity2=quantity2-1"> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
-						<tr>
-							<td class="ckbox">
-								<input type="checkbox" id="ck3" name="ck3"/>
-							</td>
-							<td class="cart_product">
-								<a href=""><img src="/assets/images/cart/three.png" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
-							</td>
-							<td class="cart_price">
-								<p>$59</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" ng-click="quantity3=quantity3+1"> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="{{quantity3}}" autocomplete="off" size="2">
-									<a class="cart_quantity_down" ng-click="quantity3=quantity3-1"> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>-->
 					</tbody>
 				</table>
 			</div>
@@ -128,63 +66,10 @@
 		<div class="container">
 			<div class="heading">
 				<h3>선택하신 물품을 주문하시겠습니까?</h3>
-				<p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
+				<!--<p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>-->
 			</div>
 			<div class="row">
-			<!--	<div class="col-sm-6">
-					<div class="chose_area">
-						<ul class="user_option">
-							<li>
-								<input type="checkbox">
-								<label>Use Coupon Code</label>
-							</li>
-							<li>
-								<input type="checkbox">
-								<label>Use Gift Voucher</label>
-							</li>
-							<li>
-								<input type="checkbox">
-								<label>Estimate Shipping & Taxes</label>
-							</li>
-						</ul>
-						<ul class="user_info">
-							<li class="single_field">
-								<label>Country:</label>
-								<select>
-									<option>United States</option>
-									<option>Bangladesh</option>
-									<option>UK</option>
-									<option>India</option>
-									<option>Pakistan</option>
-									<option>Ucrane</option>
-									<option>Canada</option>
-									<option>Dubai</option>
-								</select>
-								
-							</li>
-							<li class="single_field">
-								<label>Region / State:</label>
-								<select>
-									<option>Select</option>
-									<option>Dhaka</option>
-									<option>London</option>
-									<option>Dillih</option>
-									<option>Lahore</option>
-									<option>Alaska</option>
-									<option>Canada</option>
-									<option>Dubai</option>
-								</select>
-							
-							</li>
-							<li class="single_field zip-field">
-								<label>Zip Code:</label>
-								<input type="text">
-							</li>
-						</ul>
-						<a class="btn btn-default update" href="">Get Quotes</a>
-						<a class="btn btn-default check_out" href="">Continue</a>
-					</div>
-				</div>-->
+
 				<div class="col-sm-12">
 					<div class="total_area" >
 						<ul style="width: 50%">
@@ -193,7 +78,7 @@
 							<li>Shipping Cost <span>Free</span></li>
 							<li>Total <span>$61</span></li>
 						</ul>
-							<a class="btn btn-default update" href="/main#/checkout">Check Out</a>
+							<a class="btn btn-default update" ng-click="checkoutSelect()">Check Out</a>
 							<!--<a class="btn btn-default check_out" href="/main#/checkout">Check Out</a>-->
 					</div>
 				</div>
@@ -211,6 +96,6 @@
 	<script src="/assets/js/price-range.js"></script>
 	<script src="/assets/js/jquery.prettyPhoto.js"></script>
 	<script src="/assets/js/main.js"></script>
-<!--
-</body>
-</html>-->
+
+
+
