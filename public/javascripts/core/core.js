@@ -79,7 +79,7 @@ app.config(function ($routeProvider) {
             templateUrl: '/views/member-info.html'
         })
     .otherwise({
-      redirectTo: '/'
+      redirectTo: '/main#/'
     });
 });
 

@@ -7,7 +7,7 @@ var session = require('express-session');
 function loadUser(req,res,next) {
     console.log(req.session.member);
   if( req.session.member){
-    next();
+    // next();
   }
   else
     res.redirect('/main#/');
@@ -18,7 +18,7 @@ router.post('/login', function(req, res, next) {
 	models.Member.findOne({ // 유저 검색
 		where: {
 			mb_id: req.body.mb_id,
-			mb_pw: req.body.mb_pw
+			mb_pw: sha256(req.body.mb_pw)
 		}
 	}).then(function(member) {
 		if (member !== null) {
@@ -27,6 +27,8 @@ router.post('/login', function(req, res, next) {
 			req.session.user.ip = req.connection.remoteAddress;*/
 			delete req.session.member.mb_pw; //세션에서 password 정보 삭제
 			res.send(req.session.member);
+			// res.redirect('/main#/');
+			// alert("로그인되셨습니다.");
 		} else {
 			res.send(false);
 		}
@@ -65,6 +67,7 @@ router.post('/register', function(req, res) {
 					req.session.member.ip = req.connection.remoteAddress;*/
 					delete req.session.member.mb_pw;
 					res.send(req.session.member);
+					// res.redirect('/main#/');
 				}
 			});
 		}
@@ -80,11 +83,11 @@ router.get('/:mb_id', function(req, res) {
         where: {
             mb_id: req.params.mb_id
         }
-    }).then(function(user) {
+    }).then(function(member) {
         if (user !== null) {
             var userCli ={};
-            userCli.mb_id = user.mb_id;
-            userCli.mb_pw = user.mb_pw;
+            userCli.mb_id = member.mb_id;
+            userCli.mb_pw = member.mb_pw;
 
             res.contentType('application/json');
             res.send(userCli);
