@@ -1,5 +1,5 @@
 
-app.controller('mainCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', function($scope, $http, $cookies, $sce, $window){
+app.controller('mainCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', '$window', function($scope, $http, $cookies, $sce, $window){
     $scope.checkbox = [];
     $scope.initList=function(){
         $scope.itemList=[
@@ -43,7 +43,11 @@ app.controller('mainCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', fu
     };
 
 
-    $scope.initMain=function(){};
+    $scope.initMain=function(){
+
+        // alert($rootScope.session.member);
+
+    };
     
 /*
     $scope.initMain = function() {

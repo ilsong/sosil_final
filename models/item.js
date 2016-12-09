@@ -45,6 +45,12 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             comment: "아이템 "
+        },
+        recommended: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            defaultValue: 0,
+            comment: "추천 아이템"
         }
     }, {
         tableName: 'item',

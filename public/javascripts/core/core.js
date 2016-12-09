@@ -58,7 +58,7 @@ app.config(function ($routeProvider) {
         templateUrl: '/views/main.html'
     })
         .when('/login', {
-            controller: 'loginCtrl',
+            // controller: 'loginCtrl',
             templateUrl: '/views/login.html'
         })
         .when('/cart', {
@@ -74,8 +74,12 @@ app.config(function ($routeProvider) {
             templateUrl: '/views/checkout.html'
         })
         .when('/item/register',{
-            controller:'itemCtrl',
+            // controller:'itemCtrl',
             templateUrl:'/views/item_register.html'
+        })
+        .when('/item',{
+            controller:'itemCtrl',
+            templateUrl:'/views/items.html'
         })
         .when('/member/info', {
             controller: 'memberCtrl',
