@@ -38,6 +38,12 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             defaultValue: 0,
             comment: "유저 마일리지"
+        },
+        admin: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            defaultValue: 0,
+            comment: "관리자여부"
         }
     }, {
         tableName: 'member',
