@@ -5,11 +5,6 @@ var app = angular.module('mainApp', [
     'ngFileUpload',   
     'ngCookies', 
     'ngSanitize',
-    'com.2fdevs.videogular',
-    'com.2fdevs.videogular.plugins.controls',
-    'com.2fdevs.videogular.plugins.overlayplay',
-    'com.2fdevs.videogular.plugins.poster',
-    'com.2fdevs.videogular.plugins.buffering',
     "angular-thumbnails"
 ]);
 // 'ngStorage',
@@ -77,9 +72,9 @@ app.config(function ($routeProvider) {
             // controller:'itemCtrl',
             templateUrl:'/views/item_register.html'
         })
-        .when('/item',{
+        .when('/item/:category',{
             controller:'itemCtrl',
-            templateUrl:'/views/items.html'
+            templateUrl:'/views/item_layout.html'
         })
         .when('/member/info', {
             controller: 'memberCtrl',

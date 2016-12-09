@@ -30,4 +30,28 @@ router.post('/register', function(req, res, next) {
 
 });
 
+
+
+router.get('/:category', function(req, res) {
+	models.Item.findAll({
+		where: {
+			category: req.params.category
+		}
+	}).then(function(itemSvArr) {
+		var itemCliArr=[];
+		itemSvArr.forEach(function(itemSv){
+			itemSv=itemSv.dataValues;
+			var itemCli={
+				id:itemSv.id,
+				img:itemSv.img,
+				price:itemSv.price,
+				name:itemSv.name
+			};
+			itemCliArr.push(itemCli);
+		});
+		res.contentType('application/json');
+		res.send(itemCliArr);
+	});
+});
+
 module.exports = router;

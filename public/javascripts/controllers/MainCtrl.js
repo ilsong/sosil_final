@@ -2,7 +2,7 @@
 app.controller('mainCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', '$window', function($scope, $http, $cookies, $sce, $window){
     $scope.checkbox = [];
     $scope.initList=function(){
-        $scope.itemList=[
+        $scope.mainItemList=[
             {
                 id:1,
                 img:"/assets/images/home/recommend1.jpg",
@@ -40,6 +40,8 @@ app.controller('mainCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', 
                 name:"Easy Polo Black Edition"
             }
         ];
+
+        // console.log("session값 main"+$rootScope.session.member);
     };
 
 
