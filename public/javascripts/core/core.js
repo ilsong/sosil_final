@@ -5,7 +5,6 @@ var app = angular.module('mainApp', [
     'ngFileUpload',   
     'ngCookies', 
     'ngSanitize',
-    'ngStorage',
     'com.2fdevs.videogular',
     'com.2fdevs.videogular.plugins.controls',
     'com.2fdevs.videogular.plugins.overlayplay',
@@ -13,6 +12,7 @@ var app = angular.module('mainApp', [
     'com.2fdevs.videogular.plugins.buffering',
     "angular-thumbnails"
 ]);
+// 'ngStorage',
 
 app.filter('offset', function() {
     return function(input, start) {
@@ -36,13 +36,16 @@ app.run(['$rootScope', '$http', '$cookies', '$location', '$controller', '$sce', 
 
   //로그인 상태인지 체크
     $rootScope.loginInterceptor = function() {
-        if(!$rootScope.session)
+        if(!$rootScope.session){
             $location.path( "/main#/login" );
+        }
+
     };
   //로그아웃 상태인지 체크
     $rootScope.logoutInterceptor = function() {
-        if($rootScope.session)
+        if($rootScope.session){
             $location.path( "/main#/" );
+        }
     };
 }]);
 
@@ -79,7 +82,7 @@ app.config(function ($routeProvider) {
             templateUrl: '/views/member-info.html'
         })
     .otherwise({
-      redirectTo: '/main#/'
+      redirectTo: '/'
     });
 });
 

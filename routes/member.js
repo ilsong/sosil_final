@@ -7,7 +7,8 @@ var session = require('express-session');
 function loadUser(req,res,next) {
     console.log(req.session.member);
   if( req.session.member){
-    // next();
+	  // next();
+	  res.redirect('/main#/');
   }
   else
     res.redirect('/main#/');
@@ -23,6 +24,8 @@ router.post('/login', function(req, res, next) {
 	}).then(function(member) {
 		if (member !== null) {
 			req.session.member = member.dataValues; // 세션 추가 등록
+			/*console.log("로그인"+member.dataValues.mb_no);
+			req.session.member.mb_no=member.dataValues.mb_no;*/
 			/*req.session.user.time = new Date();
 			req.session.user.ip = req.connection.remoteAddress;*/
 			delete req.session.member.mb_pw; //세션에서 password 정보 삭제

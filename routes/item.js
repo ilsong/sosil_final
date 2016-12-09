@@ -1,18 +1,33 @@
 var express = require('express');
 var router = express.Router();
+var models = require('../models');
+var session = require('express-session');
 
 router.post('/register', function(req, res, next) {
-
 	var file = req.files.img;
+	var category=req.body.category;
+	req.body.img='/assets/images/products/'+category+'/' + file.name;
 
-	file.mv('./public/assets/images/product-details/' + file.name, function(err) {
+	console.log(req.body);
+	/*models.Item.create(req.body).then(function() {
+		res.send({
+			error: false
+		});
+	}).catch( function ( error ) {
+		res.send({ error : true });
+	});*/
+
+
+	file.mv('./public/assets/images/products/'+category+'/' + file.name, function(err) {
 		if(err) {
 			res.status(500).send(err);
 		}
 		else {
+			models.Item.create(req.body);
 			res.send('file uploaded!');
 		}
 	});
+
 });
 
 module.exports = router;

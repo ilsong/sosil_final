@@ -1,5 +1,5 @@
 
-app.controller('mainCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', '$localStorage', function($scope, $http, $cookies, $sce, $window){
+app.controller('mainCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', function($scope, $http, $cookies, $sce, $window){
     $scope.checkbox = [];
     $scope.initList=function(){
         $scope.itemList=[
@@ -40,7 +40,7 @@ app.controller('mainCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', '$
                 name:"Easy Polo Black Edition"
             }
         ];
-    }
+    };
 
 
     $scope.initMain=function(){};
@@ -113,7 +113,11 @@ app.controller('mainCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', '$
     }*/
 
     $scope.addCart = function(item){
-        $http.post('/cart/',{it_id:item.id}).then(function(data){
+        // alert('상품을 장바구니에 담았습니다.');
+        alert(item.id);
+        var itemId=item.id;
+        $http.post('/cart',{id:itemId}).then(function(data){
+
             if(data.data.error == false){
                 alert('상품을 장바구니에 담았습니다.');
             }
@@ -122,7 +126,7 @@ app.controller('mainCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', '$
                     $location.path("main#/login");
             }
         });
-        $scope.cartList.push(item);
+        // $scope.cartList.push(item);
     };
 
 

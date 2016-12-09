@@ -14,28 +14,28 @@ function loadUser(req,res,next) {
 }
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+/*router.get('/', function(req, res, next) {
   res.render('index', { title: config.title });
-});
+});*/
 
-router.get('/main', function(req, res, next) {
+router.get('/main', function(req, res) {
   res.render('main_layout', { title: config.title });
 });
 
-router.get('/member', loadUser, function(req, res, next) {
+/*router.get('/member', loadUser, function(req, res, next) {
   res.render('member', { title: config.title });
-});
+});*/
 
 router.get('/admin', function(req, res) {
   res.render('admin');
 });
 
-router.get('/login', function(req, res, next) {
+/*router.get('/login', function(req, res, next) {
   res.render('login');
-});
+});*/
 
-// router.get('/cart', loadUser, function(req, res, next) {
-//   res.render('cart', { title: config.title });
-// });
+/*router.get('/cart', loadUser, function(req, res, next) {
+  res.render('cart', { title: config.title });
+});*/
 
 module.exports = router;

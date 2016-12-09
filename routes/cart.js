@@ -6,18 +6,24 @@ var router = express.Router();
 var models = require('../models');
 var session = require('express-session');
 
+models.Cart.belongsTo(models.Item,{foreignKey: 'it_no'});
+// models.Cart.belongsTo(models.Member,{foreignKey: 'mb_no'});
+
 
 // 특정 유저의 카트 정보 session 이용
 router.get('/', function(req, res) {
+   /* console.log(1);
+    res.send('1');*/
+   // console.log(req.session.member);
     models.Cart.findAll({
         // order : 'id ASC',
         where :
         {
-            mb_id : req.session.user.mb_id
+            mb_no : req.session.member.mb_no
         },
         include: {
             model: models.Item,
-            attributes: ['it_no', 'it_name', 'it_price', 'it_category'],
+            attributes: ['id', 'name', 'price', 'category','img'],
             order: [['createdAt', 'DESC']]
         }
     }).then(function(cartSvArr) {
@@ -25,16 +31,21 @@ router.get('/', function(req, res) {
         cartSvArr.forEach(function(cartSv) {
             cartSv = cartSv.dataValues;
             cartSv.Item = cartSv.Item.dataValues;
+            console.log(cartSv.Item);
+
 
             var cartCli = {
+                id : cartSv.ck_no,
+                total : cartSv.total,
+                point : cartSv.point,
+                quantity : cartSv.quantity,
                 ck_no : cartSv.ck_no,
-                it_no : cartSv.it_no,
-                ct_num : cartSv.ct_num,
-                ct_point : cartSv.ct_point,
-                ct_total : cartSv.ct_total,
+                it_id : cartSv.it_id,
                 mb_id : cartSv. mb_id,
                 createdAt : cartSv.createdAt,
-                updatedAt : cartSv.updatedAt
+                updatedAt : cartSv.updatedAt,
+                img:cartSv.Item.img,
+                price:cartSv.Item.price
             };
             cartCliArr.push(cartCli);
         });
@@ -45,8 +56,13 @@ router.get('/', function(req, res) {
 
 // 카트 추가
 router.post('/', function(req, res) {
-    req.body.mb_id = req.session.user.mb_id;
+  /*  console.log(1);
+    res.send(1);*/
+    console.log("카트에 추가"+req.body);
+    console.log("session:" + req.session.member);
+    req.body.mb_no = req.session.member.mb_no;
 
+    // alert("카트에추가2");
     models.Cart.create(req.body).then(function() {
         res.send({
             error: false

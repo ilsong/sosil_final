@@ -99,9 +99,15 @@
 	<script src="/assets/js/main.js"></script>
 -->
 
+<style>
+	.cartImg{
+		width:250px;
+		height:320px;
+	}
 
+</style>
 
-<div ng-init="initList()"></div>
+<div ng-init="initCart()"></div>
 
 <section id="cart_items">
 	<div class="container">
@@ -146,11 +152,11 @@
 						<input type="checkbox" id="ck1" name="ck1" ng-change="checkItem(cart.id, cart.selected)" ng-model="cart.selected"  />
 					</td>
 					<td class="cart_product">
-						<a href="/main#/item/{{cart.id}}"><img src="{{cart.img}}" alt=""></a>
+						<a href="/main#/item/{{cart.id}}"><img class="cartImg"  src="{{cart.img}}" alt=""></a>
 					</td>
 					<td class="cart_description">
 						<h4><a href="">{{cart.name}}</a></h4>
-						<p>Web ID: {{cart.code}}</p>
+						<!--<p>Web ID: {{cart.code}}</p>-->
 					</td>
 					<td class="cart_price">
 						<p>{{cart.price}}원</p>
@@ -176,7 +182,7 @@
 						<table class="table table-condensed total-result">
 							<tr>
 								<td>Cart Sub Total</td>
-								<td>$59</td>
+								<td>{{cart.total}}원</td>
 							</tr>
 							<tr>
 								<td>Exo Tax</td>
@@ -188,7 +194,7 @@
 							</tr>
 							<tr>
 								<td>Total</td>
-								<td><span>$61</span></td>
+								<td><span>{{sumPrice}}</span></td>
 							</tr>
 						</table>
 					</td>

@@ -17,26 +17,21 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             comment: "아이템 id"
         },*/
-        ct_total: {
+        total: {
             type: DataTypes.INTEGER,
             // unique: true,
-            allowNull: false,
+            allowNull: true,
             comment: "장바구니 총 가격"
         },
-        ct_point: {
+        point: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
             comment: "장바구니 총 적립포인트"
         },
-        mb_no: {
+        quantity:{
             type: DataTypes.INTEGER,
-            unique: true,
-            allowNull: false,
-            comment: "유저 일련번호"
-        },
-        ct_num:{
-            type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
+            defaultValue: 1,
             comment: "물품개수"
         }
     }, {

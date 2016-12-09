@@ -8,7 +8,7 @@ app.controller('cartCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', fu
     $scope.initList=function(){
         $scope.cartList=[
             {
-                code:"code",
+                id:"code",
                 name:"Colorblock Scuba",
                 img:"/assets/images/cart/one.png",
                 price:59,
@@ -22,7 +22,7 @@ app.controller('cartCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', fu
                 quantity:1
             },
             {
-                code:"1089772",
+                id:"1089772",
                 name:"Colorblock Scuba",
                 img:"/assets/images/cart/three.png",
                 price:59,
@@ -34,6 +34,13 @@ app.controller('cartCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', fu
 
 
     $scope.initCart = function () {
+        $scope.sumPrice = 0;
+        $http.get('/cart').then(function(data){
+            $scope.cartList = data.data;
+            $scope.cartList.forEach(function(cart){
+                $scope.sumPrice += cart.total;
+            });
+        });
 
 
      /*   $http({

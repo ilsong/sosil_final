@@ -5,14 +5,10 @@ app.controller('checkCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', f
     // $scope.checkbox = [];
 
     $scope.initList = function () {
-
-
-
-
         $scope.checkList=[
             {
                 id:1,
-                code:"code",
+                // code:"code",
                 name:"Colorblock Scuba",
                 img:"/assets/images/cart/one.png",
                 price:59000,
@@ -20,7 +16,7 @@ app.controller('checkCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', f
             },
             {
                 id:2,
-                code:"1089772",
+                // code:"1089772",
                 name:"Colorblock Scuba",
                 img:"/assets/images/cart/two.png",
                 price:48000,
@@ -28,7 +24,7 @@ app.controller('checkCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', f
             },
             {
                 id:3,
-                code:"1089772",
+                // code:"1089772",
                 name:"Colorblock Scuba",
                 img:"/assets/images/cart/three.png",
                 price:20000,

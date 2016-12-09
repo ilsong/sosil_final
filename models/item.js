@@ -4,41 +4,47 @@
 module.exports = function(sequelize, DataTypes) {
     var Item = sequelize.define("Item", {
         // "User"부분 - 어떤 객체인지
-        it_no: {
+        // it_no: {
+        //     type: DataTypes.INTEGER,
+        //     autoIncrement: true,
+        //     primaryKey:true,
+        //     unique: true,
+        //     allowNull: false,
+        //     // defaultValue: 1,
+        //     comment: "아이템 id"
+        // },
+        amount: {
             type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey:true,
             unique: true,
             allowNull: false,
-            // defaultValue: 1,
-            comment: "아이템 id"
-        },
-        it_amount: {
-            type: DataTypes.INTEGER,
-            unique: true,
-            allowNull: false,
+            defaultValue:0,
             comment: "아이템 재고수량"
         },
-        it_name: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
             comment: "아이템 이름"
         },
-        it_code: {
+      /*  it_code: {
             type: DataTypes.STRING,
             allowNull: false,
             comment: "아이템 코드"
-        },
-        it_price: {
+        },*/
+        price: {
             type: DataTypes.INTEGER,
             allowNull: false,
             defaultValue: 0,
             comment: "아이템 가격"
         },
-        it_category: {
+        category: {
             type: DataTypes.STRING,
             allowNull: false,
             comment: "아이템 카테고리"
+        },
+        img: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            comment: "아이템 "
         }
     }, {
         tableName: 'item',

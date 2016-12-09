@@ -46,6 +46,7 @@ module.exports = function(sequelize, DataTypes) {
 
             associate: function(models) {
                 Member.hasMany(models.Checkout, {foreignKey: 'mb_no',onDelete:'CASCADE', onUpdate:'CASCADE'});
+                Member.hasMany(models.Cart, {foreignKey: 'mb_no',onDelete:'CASCADE', onUpdate:'CASCADE'});
             }
         }
         //classMethods: relationShip 부분
