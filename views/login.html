@@ -8,7 +8,7 @@
 							<input type="text" placeholder="ID" name="mb_id" />
 							<input type="password" placeholder="Password" name="mb_pw" />
 							<button class="btn btn-default" onclick="login()">로그인</button>
-							<button class="btn btn-default" onclick="find()">비밀번호 찾기</button>
+							<button class="btn btn-default" onclick="popup()">비밀번호 분실</button>
 						</form>
 					</div><!--/login form-->
 				</div>
@@ -22,7 +22,7 @@
 							<input type="text" name="mb_name" placeholder="Name"/>
 							<input type="text" name="mb_id" placeholder="ID"/>
 							<input type="password" name="mb_pw" placeholder="Password"/>
-							<input type="tel" name="mb_pn" placeholder="010-xxxx-xxxx" pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}" />
+							<input type="tel" name="mb_phone" placeholder="010-xxxx-xxxx" pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}" />
 							<input type="checkbox" id="check_agree" style="width:15px;height:15px;display: inline;"/>약관동의</input>
 							<button class="btn btn-default" onclick="signup()">가입</button>
 						</form>
@@ -86,7 +86,7 @@
 			}
 		}
 
-		function find() {
-			
+		function popup() {
+			window.open("/findpw", "", "width=500, height=400");
 		}
 	</script>
