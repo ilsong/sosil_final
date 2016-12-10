@@ -5,30 +5,6 @@
 app.controller('cartCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', '$window', function($rootScope,$scope, $http, $cookies, $sce, $window) {
     $scope.userChecked = [];
     $scope.initList=function(){
-        $scope.cartList=[
-            {
-                id:"code",
-                name:"Colorblock Scuba",
-                img:"/assets/images/cart/one.png",
-                price:59,
-                quantity:1
-            },
-            {
-                code:"1089772",
-                name:"Colorblock Scuba",
-                img:"/assets/images/cart/two.png",
-                price:59,
-                quantity:1
-            },
-            {
-                id:"1089772",
-                name:"Colorblock Scuba",
-                img:"/assets/images/cart/three.png",
-                price:59,
-                quantity:1
-            }
-
-        ];
     };
 
 
@@ -99,11 +75,13 @@ app.controller('cartCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', 
     $scope.checkout=function(){
 
         var check={
-            isAgree:$scope.check.isAgree,
-            payment:$scope.check.payment
+            // isAgree:$scope.check.isAgree,
+            payment:$scope.check.payment,
+            total:0,
+            total_point:0
         };
         
-        if(!check.isAgree){
+        if(!$scope.check.isAgree){
             alert("약관에 동의해주세요");
         }else{
             var cf=confirm('선택하신 물품을 주문하시겠습니까?');
@@ -111,7 +89,26 @@ app.controller('cartCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', 
                 for(var arrIndex in $scope.userChecked){
                     var cart = $scope.userChecked[arrIndex];
                     // $http.delete('/board/' + boardId);
+                    check.total+= cart.price*cart.quantity;
                 };
+
+                if(check.payment=='bank'){
+                    check.total_point=check.total*2/100;
+                }
+                else{
+                    //credit 신용카드 결제인 경우
+                    check.total_point=check.total*1/100;
+                }
+
+                $http.post('/check',{check:check}).then(function(data){
+                    if(data.data.error == false){
+                        alert('상품이 결제되었습니다.');
+                    }
+                    else{
+                        if(data.data.msg == 'doLogin')
+                            $location.path("main#/login");
+                    }
+                });
 
             }
             $scope.cartList = $scope.cartList.filter(function(item){

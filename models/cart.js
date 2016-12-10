@@ -25,9 +25,9 @@ module.exports = function(sequelize, DataTypes) {
         tableName: 'cart',
         comment: "장바구니",
         classMethods: {
-            associate: function(models) {
+          /*  associate: function(models) {
                 Cart.hasMany(models.Checkout, {foreignKey: 'ct_id', onDelete: 'CASCADE', onUpdate: 'CASCADE'});
-            }
+            }*/
         }
     });
     return Cart;

@@ -8,7 +8,7 @@ var session = require('express-session');
 
 models.Cart.belongsTo(models.Item,{foreignKey: 'it_id'});
 models.Cart.belongsTo(models.Member,{foreignKey: 'mb_no'});
-// models.Cart.belongsTo(models.Member,{foreignKey: 'mb_no'});
+models.Cart.belongsTo(models.Checkout,{foreignKey: 'ck_id'});
 
 
 // 특정 유저의 카트 정보 session 이용
@@ -35,7 +35,6 @@ router.get('/', function(req, res) {
                 total : cartSv.total,
                 point : cartSv.point,
                 quantity : cartSv.quantity,
-                ck_no : cartSv.ck_no,
                 it_id : cartSv.Item.it_id,
                 mb_id : cartSv. mb_id,
                 name: cartSv.Item.name,

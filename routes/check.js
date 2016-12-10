@@ -6,60 +6,19 @@ var router = express.Router();
 var models = require('../models');
 var session = require('express-session');
 
-models.Checkout.belongsTo(models.Item,{foreignKey: 'it_id'});
+// models.Checkout.belongsTo(models.Item,{foreignKey: 'it_id'});
 models.Checkout.belongsTo(models.Member,{foreignKey: 'mb_no'});
-models.Checkout.belongsTo(models.Cart,{foreignKey: 'ct_id'});
+// models.Checkout.belongsTo(models.Cart,{foreignKey: 'ct_id'});
 
 
-// 결제를 선택한 장바구니의 정보 가져오도록
-router.get('/', function(req, res) {
-    models.Check.findOne({
-        where :
-        {
-            mb_no : req.session.member.mb_no
 
-        },
-        include: {
-            model: models.Item,
-            attributes: ['id', 'name', 'price', 'category','img'],
-            order: [['createdAt', 'DESC']]
-        }
-    }).then(function(cartSvArr) {
-        var cartCliArr = [];
-        cartSvArr.forEach(function(cartSv) {
-            cartSv = cartSv.dataValues;
-            cartSv.Item = cartSv.Item.dataValues;
-            console.log(cartSv.Item);
-
-
-            var cartCli = {
-                id : cartSv.ck_no,
-                total : cartSv.total,
-                point : cartSv.point,
-                quantity : cartSv.quantity,
-                ck_no : cartSv.ck_no,
-                it_no : cartSv.it_no,
-                mb_id : cartSv. mb_id,
-                createdAt : cartSv.createdAt,
-                updatedAt : cartSv.updatedAt,
-                img:cartSv.Item.img,
-                price:cartSv.Item.price
-            };
-            cartCliArr.push(cartCli);
-        });
-        res.contentType('application/json');
-        res.send(cartCliArr);
-    });
-});
-
-// 카트 추가
+//결제하기
 router.post('/', function(req, res) {
-    console.log("카트에 추가"+req.body);
+    console.log("결제하기"+req.body);
     console.log("session:" + req.session.member);
-    req.body.mb_no = req.session.member.mb_no;
-
+    req.body.check.mb_no = req.session.member.mb_no;
     // alert("카트에추가2");
-    models.Cart.create(req.body).then(function() {
+    models.Checkout.create(req.body.check).then(function() {
         res.send({
             error: false
         });
@@ -69,6 +28,7 @@ router.post('/', function(req, res) {
 });
 
 // 카트에 상품 삭제
+/*
 router.delete('/:id', function(req, res) {
     console.log("deleteCart"+req.params.id);
     var mb_no=req.session.member.mb_no;
@@ -91,6 +51,7 @@ router.delete('/:id', function(req, res) {
         }
     });
 });
+*/
 
 function isLogin(req,res,next) {
     if(req.session.user)

@@ -4,15 +4,7 @@
 
 module.exports = function(sequelize, DataTypes) {
     var Checkout = sequelize.define("Checkout", {
-        // "User"부분 - 어떤 객체인지
-    /*    ck_no: {
-            type: DataTypes.INTEGER,
-            primaryKey:true,
-            // autoIncrement: true,
-            unique: true,
-            allowNull: false,
-            comment: "장바구니 id"
-        },*/
+
         total: {
             type: DataTypes.INTEGER,
             // unique: true,
@@ -33,9 +25,9 @@ module.exports = function(sequelize, DataTypes) {
         tableName: 'ckeckout',
         comment: "결제",
         classMethods: {
-            /*associate: function(models) {
-                Checkout.hasMany(models.Cart, {foreignKey: 'ck_no',onDelete:'CASCADE', onUpdate:'CASCADE'});
-            }*/
+            associate: function(models) {
+                Checkout.hasMany(models.Cart, {foreignKey: 'ck_id',onDelete:'CASCADE', onUpdate:'CASCADE'});
+            }
         }
     });
     return Checkout;
