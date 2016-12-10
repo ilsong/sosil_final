@@ -40,7 +40,7 @@ router.get('/', function(req, res) {
                 point : cartSv.point,
                 quantity : cartSv.quantity,
                 ck_no : cartSv.ck_no,
-                it_id : cartSv.it_id,
+                it_no : cartSv.it_no,
                 mb_id : cartSv. mb_id,
                 createdAt : cartSv.createdAt,
                 updatedAt : cartSv.updatedAt,
@@ -73,10 +73,13 @@ router.post('/', function(req, res) {
 });
 
 // 카트에 상품 삭제
-router.delete('/:mb_id', function(req, res) {
+router.delete('/:id', function(req, res) {
+    console.log("deleteCart"+req.params.id);
+    var mb_no=req.session.member.mb_no;
     models.Cart.findOne({
         where: {
-            mb_id: req.params.id
+            id: req.params.id
+            ,mb_no: mb_no
         }
     }).then(function(cart) {
         if (cart !== null) {

@@ -85,7 +85,7 @@ app.controller('loginCtrl', ['$rootScope', '$scope', '$http', '$cookies', '$loca
                   $location.path( "/" );
                 }
                 else {
-                  alert("ID 또는 비밀번호가 올바르지 않습니다.");
+                  // alert("ID 또는 비밀번호가 올바르지 않습니다.");
                   window.location.reload(true);
                 }
             }

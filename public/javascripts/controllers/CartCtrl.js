@@ -42,6 +42,15 @@ app.controller('cartCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', fu
             });
         });
 
+        $scope.delCart=function(cart){
+            var itemId=cart.id;
+            var cf=confirm('해당물품을 장바구니에서 삭제하시겠습니까?'+itemId);
+            if(cf){
+                $http.delete('/cart',{id:itemId});
+                $window.location.reload('/main#/cart');
+            }
+        }
+
 
      /*   $http({
             url: '/items/list/',

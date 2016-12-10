@@ -173,7 +173,7 @@
 						<p class="cart_total_price">{{cart.price * cart.quantity}}원</p>
 					</td>
 					<td class="cart_delete">
-						<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+						<a class="cart_quantity_delete" ng-click="delCart(cart)"><i class="fa fa-times"></i></a>
 					</td>
 				</tr>
 				<tr>
@@ -245,8 +245,8 @@
 							<!--<input type="password" placeholder="Password">-->
 							<input type="password" placeholder="Confirm password">
 						</form>
-						<a class="btn btn-primary" href="">Get Quotes</a>
-						<a class="btn btn-primary" href="">Continue</a>
+						<!--<a class="btn btn-primary" href="">Get Quotes</a>
+						<a class="btn btn-primary" href="">Continue</a>-->
 					</div>
 				</div>
 

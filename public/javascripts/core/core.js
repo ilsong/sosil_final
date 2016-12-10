@@ -5,7 +5,9 @@ var app = angular.module('mainApp', [
     'ngFileUpload',   
     'ngCookies', 
     'ngSanitize',
-    "angular-thumbnails"
+    'angular-thumbnails'
+   /* , 'ngStorage'
+    , 'LocalStorageModule'*/
 ]);
 // 'ngStorage',
 
@@ -43,6 +45,15 @@ app.run(['$rootScope', '$http', '$cookies', '$location', '$controller', '$sce', 
         }
     };
 }]);
+
+
+/*
+app.config(function(localStorageServiceProvider){
+    localStorageServiceProvider
+        .setPrefix('sessionS')
+});
+*/
+
 
 app.config(function ($routeProvider) {
   

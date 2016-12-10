@@ -25,7 +25,8 @@
     "videogular-ima-ads": "^1.4.4",
     "videogular-overlay-play": "^1.4.4",
     "videogular-poster": "^1.4.4",
-    "videogular-themes-default": "^1.4.4"
+    "videogular-themes-default": "^1.4.4",
+    "angular-local-storage": "^0.5.2"
   },
   "resolutions": {
     "angular": "^1.5.8"
