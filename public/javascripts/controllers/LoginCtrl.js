@@ -1,6 +1,6 @@
 
 
-app.controller('loginCtrl', ['$rootScope', '$scope', '$http', '$cookies', '$location', function($rootScope, $scope, $http, $cookies, $location){
+app.controller('loginCtrl', ['$rootScope', '$scope', '$http', '$cookies', '$location','localStorageService', function($rootScope, localStorageService, $scope, $http, $cookies, $location){
     $scope.registrySubmit = function(){
 
       if($scope.user_id===undefined || $scope.user_id==""){
@@ -83,10 +83,6 @@ app.controller('loginCtrl', ['$rootScope', '$scope', '$http', '$cookies', '$loca
                 if( data.result !== false ) {
                   $rootScope.session = data;
                   $location.path( "/" );
-                }
-                else {
-                  // alert("ID 또는 비밀번호가 올바르지 않습니다.");
-                  window.location.reload(true);
                 }
             }
         );

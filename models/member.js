@@ -39,17 +39,16 @@ module.exports = function(sequelize, DataTypes) {
             defaultValue: 0,
             comment: "유저 마일리지"
         }
-        /*, admin: {
+        , admin: {
             type: DataTypes.INTEGER,
             allowNull: false,
             defaultValue: 0,
             comment: "관리자여부"
-        }*/
+        }
     }, {
         tableName: 'member',
         comment: "사용자",
         classMethods: {
-
             associate: function(models) {
                 Member.hasMany(models.Checkout, {foreignKey: 'mb_no',onDelete:'CASCADE', onUpdate:'CASCADE'});
                 Member.hasMany(models.Cart, {foreignKey: 'mb_no',onDelete:'CASCADE', onUpdate:'CASCADE'});

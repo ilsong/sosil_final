@@ -34,6 +34,9 @@
 	<script src="/assets/js/jquery.js"></script>
 
 	<script type="text/javascript">
+		var session=window.sessionStorage;
+
+
 		function login() {
 			$("#login-form").submit(function(event) {
 				event.preventDefault();
@@ -44,6 +47,8 @@
 					success: function(data) {
 						if(data){
 							alert("환영합니다. "+data.mb_name+"님");
+						/*	session.setItem("mb_id",data.mb_id);
+							session.setItem("mb_no",data.mb_no);*/
 							location.href='/main#/';
 						}
 						else

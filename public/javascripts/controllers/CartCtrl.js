@@ -49,7 +49,7 @@ app.controller('cartCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', fu
                 $http.delete('/cart',{id:itemId});
                 $window.location.reload('/main#/cart');
             }
-        }
+        };
 
 
      /*   $http({
@@ -111,12 +111,14 @@ app.controller('cartCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', fu
     // $scope.quantity2=1;
     // $scope.quantity3=1;
 
-    $scope.increase = function (){
-        $scope.quantity++;
+    $scope.increase = function (quantity){
+        $scope.quantity=quantity+1;
+
+        // $scope.cart.price * cart.quantity
 
     };
-    $scope.decrease = function (){
-        $scope.quantity=-1;
+    $scope.decrease = function (quantity){
+        $scope.quantity=quantity-1;
     };
 
     $scope.userChecked = [];
@@ -124,9 +126,10 @@ app.controller('cartCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', fu
     $scope.checkAll=function(checked){
         $scope.userChecked = [];
 
-        angular.forEach($scope.cartList, function(value) {
-            value.selected = checked;
-            $scope.userChecked.push(value.id);
+        angular.forEach($scope.cartList, function(cart) {
+            cart.selected = checked;
+            // $scope.userChecked.push(value.id);
+            $scope.userChecked.push(cart);
         });
 
         if (!checked) {
@@ -134,31 +137,50 @@ app.controller('cartCtrl', ['$scope', '$http', '$cookies', '$sce', '$window', fu
         }
     };
 
-    $scope.checkItem = function(id, checked) {
+    $scope.checkItem = function(cart, checked) {
+        alert('checkItem');
         if (checked) {
-            $scope.userChecked.push(id);
+            $scope.userChecked.push(cart);
+
+            $scope.userChecked.forEach(function(cart){
+                $scope.sumPrice += cart.quantity*cart.price;
+
+            });
+
+            // alert($scope.sumPrice);
+            // $scope.sumPrice;
         } else {
-            $scope.userChecked.pop();
+            var cart=$scope.userChecked.pop();
+            alert(cart.id);
+            $scope.sumPrice -= cart.quantity*cart.price;
+
+            // alert(Object.keys(cart));
+
+            // $scope.userChecked.pop();
+
+
         }
     };
 
-    $scope.checkoutSelect=function(){
+    $scope.checkout=function(){
+        var cf=confirm('선택하신 물품을 주문하시겠습니까?');
+        if(cf){
+            for(var arrIndex in $scope.userChecked){
+                var cart = $scope.userChecked[arrIndex];
+                // $http.delete('/board/' + boardId);
+            };
 
-        for(var arrIndex in $scope.userChecked){
-            var cartId = $scope.userChecked[arrIndex];
+        }
 
-            // $http.delete('/board/' + boardId);
-        };
 
         $scope.cartList = $scope.cartList.filter(function(item){
             return !item.selected;
         });
 
         $scope.userChecked = [];
-        alert("1");
+        // alert("1");
         $window.location.reload("/cart");
-        alert("2");
-
+        // alert("2");
     };
 
 

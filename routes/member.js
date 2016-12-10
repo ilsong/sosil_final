@@ -48,6 +48,8 @@ router.get('/logout', function(req, res, next) {
 });
 
 router.get('/getSession', function(req, res, next) {
+	console.log('getSession');
+	console.log(req.session);
 	res.send(req.session.member);
 	//내 세션을 전달하는 부분
 });

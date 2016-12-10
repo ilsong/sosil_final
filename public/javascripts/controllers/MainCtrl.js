@@ -1,7 +1,10 @@
 
-app.controller('mainCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', '$window', function($scope, $http, $cookies, $sce, $window){
+app.controller('mainCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', '$window', function($rootScope,$scope, $http, $cookies, $sce, $window){
     $scope.checkbox = [];
+
+    // $scope.member=$rootScope.member.mb_name;
     $scope.initList=function(){
+
         $scope.mainItemList=[
             {
                 id:1,
@@ -41,7 +44,12 @@ app.controller('mainCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', 
             }
         ];
 
-        // console.log("session값 main"+$rootScope.session.member);
+       /* $http.get('/member/getSession').then(function(data){
+            alert(data);
+        });*/
+     /*  alert($rootScope.session);
+
+         console.log("session값 main"+$rootScope.session);*/
     };
 
 
@@ -50,6 +58,10 @@ app.controller('mainCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', 
         // alert($rootScope.session.member);
 
     };
+
+/*    $scope.initHeader=function(){
+
+    }*/
     
 /*
     $scope.initMain = function() {

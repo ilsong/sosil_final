@@ -4,7 +4,7 @@
 
 app.controller('adminCtrl', ['$scope', '$http', 'Upload', '$cookies', '$sce', '$window', function($scope, $http, Upload, $cookies, $sce, $window) {
 
-    $scope.uploadPost=function(file){
+   /* $scope.uploadPost=function(file){
         if(file != null){
             file.upload = Upload.upload({
                 url: '/item/register',
@@ -31,7 +31,6 @@ app.controller('adminCtrl', ['$scope', '$http', 'Upload', '$cookies', '$sce', '$
         }else{
             $location.path("/main#");
         }
-    };
-
+    };*/
 
 }]);

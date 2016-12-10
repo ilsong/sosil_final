@@ -7,6 +7,7 @@ var models = require('../models');
 var session = require('express-session');
 
 models.Cart.belongsTo(models.Item,{foreignKey: 'it_no'});
+models.Cart.belongsTo(models.Member,{foreignKey: 'mb_no'});
 // models.Cart.belongsTo(models.Member,{foreignKey: 'mb_no'});
 
 
