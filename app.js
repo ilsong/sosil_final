@@ -11,6 +11,7 @@ var routes = require('./routes/index');
 var member = require('./routes/member');
 var cart=require('./routes/cart');
 var item = require('./routes/item');
+var check = require('./routes/check');
 
 var app = express();
 
@@ -43,6 +44,7 @@ app.use('/', routes);
 app.use('/member', member);
 app.use('/cart',cart);
 app.use('/item', item);
+app.use('/check', check);
 
 
 

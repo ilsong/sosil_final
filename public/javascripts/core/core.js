@@ -6,8 +6,8 @@ var app = angular.module('mainApp', [
     'ngCookies', 
     'ngSanitize',
     'angular-thumbnails'
-   /* , 'ngStorage'
-    , 'LocalStorageModule'*/
+    // , 'ngStorage'
+    ,'LocalStorageModule'
 ]);
 // 'ngStorage',
 
@@ -19,17 +19,21 @@ app.filter('offset', function() {
     };
 });
 
+
+// Session storage 초기화.
+app.config(function (localStorageServiceProvider) {
+    localStorageServiceProvider
+        .setPrefix('sessionS')
+        .setStorageType('sessionStorage')
+        .setNotify(true, true)
+});
+
 app.run(['$rootScope', '$http', '$cookies', '$location', '$controller', '$sce', function($rootScope, $http, $cookies, $location, $controller, $sce) {
 
     $http.get('/member/getSession').success(function(data) {
         $rootScope.session = data;
     });
 
-  /*  $http.get("/mainAdmin").success(
-        function (data) {
-            $rootScope.mainAdmin=data;
-            $rootScope.mainAdmin.mainLogo = $rootScope.mainAdmin.mainLogo.split("\\").join("/");
-    });*/
 
   //로그인 상태인지 체크
     $rootScope.loginInterceptor = function() {
@@ -47,16 +51,9 @@ app.run(['$rootScope', '$http', '$cookies', '$location', '$controller', '$sce', 
 }]);
 
 
-/*
-app.config(function(localStorageServiceProvider){
-    localStorageServiceProvider
-        .setPrefix('sessionS')
-});
-*/
 
 
 app.config(function ($routeProvider) {
-  
     $routeProvider
     //template
     .when('/', {

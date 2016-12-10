@@ -1,26 +1,22 @@
 /**
- * Created by 김서진 on 2016-11-24.
+ * Created by 김서진 on 2016-12-10.
  */
 var express = require('express');
 var router = express.Router();
 var models = require('../models');
 var session = require('express-session');
 
-models.Cart.belongsTo(models.Item,{foreignKey: 'it_no'});
-models.Cart.belongsTo(models.Member,{foreignKey: 'mb_no'});
+models.Checkout.belongsTo(models.Item,{foreignKey: 'it_no'});
 // models.Cart.belongsTo(models.Member,{foreignKey: 'mb_no'});
 
 
-// 특정 유저의 카트 정보 session 이용
+// 결제를 선택한 장바구니의 정보 가져오도록
 router.get('/', function(req, res) {
-   /* console.log(1);
-    res.send('1');*/
-   // console.log(req.session.member);
-    models.Cart.findAll({
-        // order : 'id ASC',
+    models.Check.findOne({
         where :
         {
-            mb_no : req.session.member.mb_no
+            mb_no : req.session.member.mb_no,
+
         },
         include: {
             model: models.Item,
@@ -57,8 +53,6 @@ router.get('/', function(req, res) {
 
 // 카트 추가
 router.post('/', function(req, res) {
-  /*  console.log(1);
-    res.send(1);*/
     console.log("카트에 추가"+req.body);
     console.log("session:" + req.session.member);
     req.body.mb_no = req.session.member.mb_no;

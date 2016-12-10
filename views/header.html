@@ -1,3 +1,4 @@
+
 <header id="header"><!--header-->
     <div class="header-middle"><!--header-middle-->
         <div class="container">
@@ -16,7 +17,8 @@
                             <li><a href="/main#/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                             <li><a href="/main#/checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="/main#/login"><i class="fa fa-lock"></i> Login</a></li>
-                            <li><a href="/main#/logout"><i class="fa fa-unlock"></i> Logout</a></li>
+                            <li><a href="/main#/logout"><i class="fa fa-unlock"></i> Logout {{session.member}}</a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -40,20 +42,22 @@
                         <ul class="nav navbar-nav collapse navbar-collapse">
                             <li><a href="index.html" class="active">Home</a></li>
 
-                            <li class="dropdown"><a href="#">OUTER</a></li>
-                            <li class="dropdown"><a href="#">TOP</a></li>
-                            <li class="dropdown"><a href="#">DRESS</a></li>
-                            <li class="dropdown"><a href="#">BOTTOM</a></li>
-                            <li class="dropdown"><a href="#">SHOES&BAG<i class="fa fa-angle-down"></i></a>
-                                <ul role="menu" class="sub-menu">
+                            <li class="dropdown"><a href="/main#/item/4">OUTER</a></li>
+                            <li class="dropdown"><a href="/main#/item/1">TOP</a></li>
+                            <li class="dropdown"><a href="/main#/item/2">DRESS</a></li>
+                            <li class="dropdown"><a href="/main#/item/3">BOTTOM</a></li>
+                            <li class="dropdown"><a href="/main#/item/5">SHOES&BAG
+                                <!--<i class="fa fa-angle-down"></i>-->
+                            </a>
+                             <!--   <ul role="menu" class="sub-menu">
                                     <li><a href="shop.html">SHOES</a></li>
                                     <li><a href="/main#/cart">BAG</a></li>
-                                </ul>
+                                </ul>-->
                             </li>
-                            <li class="dropdown"><a href="#">ACCESSORY</a></li>
+                            <li class="dropdown"><a href="/main#/item/6">ACCESSORY</a></li>
 
                             <!--admin계정으로 로그인 시에만 보이게 한다-->
-                            <li class="dropdown"><a href="#">Admin<i class="fa fa-angle-down"></i></a>
+                            <li class="dropdown"><a href="/main#/item/register">ADMIN<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="/main#/item/register">Add Items</a></li>
                                     <li><a href="blog-single.html">ADMIN MENU2</a></li>
@@ -62,11 +66,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-3">
-                    <!--<div class="search_box pull-right">
-                        <input type="text" placeholder="Search"/>
-                    </div>-->
-                </div>
+
             </div>
         </div>
     </div><!--/header-bottom-->

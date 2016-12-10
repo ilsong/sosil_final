@@ -34,7 +34,7 @@ module.exports = function(sequelize, DataTypes) {
         comment: "결제",
         classMethods: {
             associate: function(models) {
-                Checkout.hasMany(models.Cart, {foreignKey: 'ck_no',onDelete:'CASCADE', onUpdate:'CASCADE'});
+                // Checkout.hasMany(models.Cart, {foreignKey: 'ck_no',onDelete:'CASCADE', onUpdate:'CASCADE'});
             }
         }
     });
