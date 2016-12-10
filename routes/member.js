@@ -82,6 +82,22 @@ router.post('/register', function(req, res) {
 	});
 });
 
+router.post('/findpw', function(req, res) {
+	models.Member.findOne({
+		where: {
+			mb_id: req.body.mb_id,
+			mb_name: req.body.mb_name,
+			mb_phone: req.body.mb_phone
+		}
+	}).then(function(user){
+		if(user) {
+			res.send(true);
+		} else {
+			res.send(false);
+		}
+	});
+});
+
 // Read
 router.get('/:mb_id', function(req, res) {
 	models.Member.findOne({

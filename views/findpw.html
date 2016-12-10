@@ -1,0 +1,35 @@
+<section id="form"><!--form-->
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-1">
+				<div class="login-form"><!--login form-->
+					<h2>비밀번호분실</h2>
+					<form id="find-form">
+						아이디: <input type="text" placeholder="아이디" name="mb_id" /><br>
+						이&nbsp&nbsp&nbsp름: <input type="text" placeholder="이름" name="mb_name" /><br>
+						번&nbsp&nbsp&nbsp호: <input type="text" placeholder="핸드폰번호" name="mb_phone" /><br><br>
+						<button onclick="findpw()">비밀번호 변경하기</button>
+					</form>
+				</div><!--/login form-->
+			</div>
+		</div>
+	</div>
+</section><!--/form-->
+
+<script src="/assets/js/jquery.js"></script>
+<script type="text/javascript">
+	function findpw() {
+		alert("hi");
+		$.ajax({
+			type: "POST",
+			url: "/member/findpw",
+			data: $("#find-form").serialize(),
+			success: function(data) {
+				if(data)
+					alert('성공');
+				else
+					alert('실패');
+			}
+		});
+	}
+</script> -
