@@ -7,15 +7,8 @@ router.post('/register', function(req, res, next) {
 	var file = req.files.img;
 	var category=req.body.category;
 	req.body.img='/assets/images/products/'+category+'/' + file.name;
-
 	console.log(req.body);
-	/*models.Item.create(req.body).then(function() {
-		res.send({
-			error: false
-		});
-	}).catch( function ( error ) {
-		res.send({ error : true });
-	});*/
+
 
 
 	file.mv('./public/assets/images/products/'+category+'/' + file.name, function(err) {
@@ -34,6 +27,30 @@ router.post('/register', function(req, res, next) {
 
 router.get('/:category', function(req, res) {
 	models.Item.findAll({
+		where: {
+			category: req.params.category
+		}
+	}).then(function(itemSvArr) {
+		var itemCliArr=[];
+		itemSvArr.forEach(function(itemSv){
+			itemSv=itemSv.dataValues;
+			var itemCli={
+				id:itemSv.id,
+				img:itemSv.img,
+				price:itemSv.price,
+				name:itemSv.name
+			};
+			itemCliArr.push(itemCli);
+		});
+		res.contentType('application/json');
+		res.send(itemCliArr);
+	});
+});
+
+
+router.get('/:', function(req, res) {
+	models.Item.findAll({
+		order : ' DESC',
 		where: {
 			category: req.params.category
 		}

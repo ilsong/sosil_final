@@ -83,6 +83,9 @@ router.post('/register', function(req, res) {
 });
 
 router.post('/findpw', function(req, res) {
+	console.log('findPw:'+req.body.mb_id);
+	console.log('findName:'+req.body.mb_name);
+	console.log('findPhone:'+req.body.mb_phone);
 	models.Member.findOne({
 		where: {
 			mb_id: req.body.mb_id,

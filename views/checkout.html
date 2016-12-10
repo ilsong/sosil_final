@@ -22,7 +22,7 @@
         </div>
 
         <div class="table-responsive cart_info">
-            <table class="table table-condensed">
+            <table class="table table-condensed" style="text-align: center">
                 <thead>
                 <tr class="cart_menu">
                     <td class="image">물품</td>
@@ -56,14 +56,11 @@
                     <td class="cart_total">
                         <p class="cart_total_price">{{check.price * check.quantity}}원</p>
                     </td>
-                  <!--  <td class="cart_delete">
-                        <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                    </td>-->
                 </tr>
                 <tr>
                     <td colspan="3">&nbsp;</td>
                     <td colspan="2">
-                        <table class="table table-condensed total-result">
+                        <table class="table table-condensed total-result" style="text-align: left">
                             <tr>
                                 <td>Cart Sub Total</td>
                                 <td>$59</td>
@@ -97,17 +94,6 @@
 
             <h3>주문자정보</h3>
             <p>Checkout options</p>
-            <!--   <ul class="nav">
-                   <li>
-                       <label><input type="checkbox"> New User</label>
-                   </li>
-                   <li>
-                       <label><input type="checkbox"> Guest Checkout</label>
-                   </li>
-                   <li>
-                       <a href="" onclick="confirm('주문을 취소하시겠습니까?')"><i class="fa fa-times"></i>Cancel</a>
-                   </li>
-               </ul>-->
         </div>
         <!--/checkout-options-->
 
@@ -122,10 +108,8 @@
                     <div class="shopper-info">
                         <p>Shopper Information</p>
                         <form>
-                            <input type="text" placeholder="Display Name">
+                            <input type="text" placeholder="Name">
                             <input type="text" placeholder="User Name">
-                            <!--<input type="password" placeholder="Password">-->
-                            <input type="password" placeholder="Confirm password">
                         </form>
                         <a class="btn btn-primary" href="">Get Quotes</a>
                         <a class="btn btn-primary" href="">Continue</a>
@@ -138,12 +122,9 @@
                         <p>Bill To</p>
                         <div class="form-one">
                             <form>
-                                <input type="text" placeholder="Company Name">
                                 <input type="text" placeholder="Email*">
                                 <input type="text" placeholder="Title">
-                                <input type="text" placeholder="First Name *">
-                                <input type="text" placeholder="Middle Name">
-                                <input type="text" placeholder="Last Name *">
+                                <input type="text" placeholder="Name">
                                 <input type="text" placeholder="Address 1 *">
                                 <input type="text" placeholder="Address 2">
                             </form>
@@ -173,10 +154,7 @@
                                     <option>Canada</option>
                                     <option>Dubai</option>
                                 </select>
-                                <input type="password" placeholder="Confirm password">
-                                <input type="text" placeholder="Phone *">
-                                <input type="text" placeholder="Mobile Phone">
-                                <input type="text" placeholder="Fax">
+                                <input type="text" placeholder="Phone *" required>
                             </form>
                         </div>
                     </div>

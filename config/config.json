@@ -6,7 +6,7 @@
         "port": "3306",
         "username": "root",
         "password": "0000",
-        "database": "test",
+        "database": "s",
         "dialect": "mysql",
         "logging": true,
 	    "multipleStatements": true,

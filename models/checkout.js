@@ -33,9 +33,9 @@ module.exports = function(sequelize, DataTypes) {
         tableName: 'ckeckout',
         comment: "결제",
         classMethods: {
-            associate: function(models) {
-                // Checkout.hasMany(models.Cart, {foreignKey: 'ck_no',onDelete:'CASCADE', onUpdate:'CASCADE'});
-            }
+            /*associate: function(models) {
+                Checkout.hasMany(models.Cart, {foreignKey: 'ck_no',onDelete:'CASCADE', onUpdate:'CASCADE'});
+            }*/
         }
     });
     return Checkout;

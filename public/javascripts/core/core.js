@@ -6,10 +6,8 @@ var app = angular.module('mainApp', [
     'ngCookies', 
     'ngSanitize',
     'angular-thumbnails'
-    // , 'ngStorage'
     ,'LocalStorageModule'
 ]);
-// 'ngStorage',
 
 app.filter('offset', function() {
     return function(input, start) {
@@ -31,7 +29,8 @@ app.config(function (localStorageServiceProvider) {
 app.run(['$rootScope', '$http', '$cookies', '$location', '$controller', '$sce', function($rootScope, $http, $cookies, $location, $controller, $sce) {
 
     $http.get('/member/getSession').success(function(data) {
-        $rootScope.session = data;
+        if(!data.error)
+            $rootScope.session = data;
     });
 
 

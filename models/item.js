@@ -45,7 +45,6 @@ module.exports = function(sequelize, DataTypes) {
                 Item.hasMany(models.Cart, {foreignKey: 'it_id',onDelete:'CASCADE', onUpdate:'CASCADE'});
             }
         }
-        //classMethods: relationShip 부분
     });
     return Item;
 }

@@ -108,13 +108,12 @@
 </style>
 
 <div ng-init="initCart()"></div>
-
 <section id="cart_items">
 	<div class="container">
 		<div class="breadcrumbs">
 			<ol class="breadcrumb">
 				<li><a href="#">Home</a></li>
-				<li class="active">Check out</li>
+				<li class="active">Cart</li>
 			</ol>
 		</div><!--/breadcrums-->
 
@@ -177,7 +176,6 @@
 					</td>
 				</tr>
 				<tr>
-
 					<td colspan="4">&nbsp;</td>
 					<td colspan="2">
 						<table class="table table-condensed total-result">
@@ -197,16 +195,19 @@
 								<td>Total</td>
 								<td><span>{{sumPrice}}</span></td>
 							</tr>
+							<tr>
+								<td align="center"><a class="btn btn-default update" ng-click="checkout()">Check Out</a></td>
+								<td></td>
+							</tr>
 						</table>
 					</td>
-
 				</tr>
-
 				</tbody>
 			</table>
 		</div>
 
-		<a class="btn btn-default update" ng-click="checkout()">Check Out</a>
+
+
 
 
 		<div class="step-one">
@@ -218,17 +219,6 @@
 
 			<h3>주문자정보</h3>
 			<p>Checkout options</p>
-			<!--   <ul class="nav">
-                   <li>
-                       <label><input type="checkbox"> New User</label>
-                   </li>
-                   <li>
-                       <label><input type="checkbox"> Guest Checkout</label>
-                   </li>
-                   <li>
-                       <a href="" onclick="confirm('주문을 취소하시겠습니까?')"><i class="fa fa-times"></i>Cancel</a>
-                   </li>
-               </ul>-->
 		</div>
 		<!--/checkout-options-->
 
@@ -245,33 +235,24 @@
 						<form>
 							<input type="text" placeholder="Display Name">
 							<input type="text" placeholder="User Name">
-							<!--<input type="password" placeholder="Password">-->
-							<input type="password" placeholder="Confirm password">
 						</form>
-						<!--<a class="btn btn-primary" href="">Get Quotes</a>
-						<a class="btn btn-primary" href="">Continue</a>-->
 					</div>
 				</div>
-
 
 				<div class="col-sm-5 clearfix">
 					<div class="bill-to">
 						<p>Bill To</p>
 						<div class="form-one">
 							<form>
-								<input type="text" placeholder="Company Name">
 								<input type="text" placeholder="Email*">
 								<input type="text" placeholder="Title">
-								<input type="text" placeholder="First Name *">
-								<input type="text" placeholder="Middle Name">
-								<input type="text" placeholder="Last Name *">
+								<input type="text" placeholder="Name">
 								<input type="text" placeholder="Address 1 *">
 								<input type="text" placeholder="Address 2">
 							</form>
 						</div>
 						<div class="form-two">
 							<form>
-								<input type="text" placeholder="Zip / Postal Code *">
 								<select>
 									<option>-- Country --</option>
 									<option>United States</option>
@@ -294,10 +275,7 @@
 									<option>Canada</option>
 									<option>Dubai</option>
 								</select>
-								<input type="password" placeholder="Confirm password">
-								<input type="text" placeholder="Phone *">
-								<input type="text" placeholder="Mobile Phone">
-								<input type="text" placeholder="Fax">
+								<input type="text" placeholder="Phone *" required>
 							</form>
 						</div>
 					</div>

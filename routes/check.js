@@ -6,8 +6,9 @@ var router = express.Router();
 var models = require('../models');
 var session = require('express-session');
 
-models.Checkout.belongsTo(models.Item,{foreignKey: 'it_no'});
-// models.Cart.belongsTo(models.Member,{foreignKey: 'mb_no'});
+models.Checkout.belongsTo(models.Item,{foreignKey: 'it_id'});
+models.Checkout.belongsTo(models.Member,{foreignKey: 'mb_no'});
+models.Checkout.belongsTo(models.Cart,{foreignKey: 'ct_id'});
 
 
 // 결제를 선택한 장바구니의 정보 가져오도록
@@ -15,7 +16,7 @@ router.get('/', function(req, res) {
     models.Check.findOne({
         where :
         {
-            mb_no : req.session.member.mb_no,
+            mb_no : req.session.member.mb_no
 
         },
         include: {
