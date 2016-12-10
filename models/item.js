@@ -37,6 +37,12 @@ module.exports = function(sequelize, DataTypes) {
             defaultValue: 0,
             comment: "추천 아이템"
         }
+        ,purchased: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            defaultValue: 0,
+            comment: "구매된 정도"
+        }
     }, {
         tableName: 'item',
         comment: "아이템",

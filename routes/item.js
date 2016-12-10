@@ -23,7 +23,45 @@ router.post('/register', function(req, res, next) {
 
 });
 
+router.get('/new', function(req, res) {
+	models.Item.findAll({
+		order : 'updatedAt DESC'
+	}).then(function(itemSvArr) {
+		var itemCliArr=[];
+		itemSvArr.forEach(function(itemSv){
+			itemSv=itemSv.dataValues;
+			var itemCli={
+				id:itemSv.id,
+				img:itemSv.img,
+				price:itemSv.price,
+				name:itemSv.name
+			};
+			itemCliArr.push(itemCli);
+		});
+		res.contentType('application/json');
+		res.send(itemCliArr);
+	});
+});
 
+router.get('/best', function(req, res) {
+	models.Item.findAll({
+		order : 'purchased DESC'
+	}).then(function(itemSvArr) {
+		var itemCliArr=[];
+		itemSvArr.forEach(function(itemSv){
+			itemSv=itemSv.dataValues;
+			var itemCli={
+				id:itemSv.id,
+				img:itemSv.img,
+				price:itemSv.price,
+				name:itemSv.name
+			};
+			itemCliArr.push(itemCli);
+		});
+		res.contentType('application/json');
+		res.send(itemCliArr);
+	});
+});
 
 router.get('/:category', function(req, res) {
 	models.Item.findAll({
@@ -48,27 +86,6 @@ router.get('/:category', function(req, res) {
 });
 
 
-router.get('/:', function(req, res) {
-	models.Item.findAll({
-		order : ' DESC',
-		where: {
-			category: req.params.category
-		}
-	}).then(function(itemSvArr) {
-		var itemCliArr=[];
-		itemSvArr.forEach(function(itemSv){
-			itemSv=itemSv.dataValues;
-			var itemCli={
-				id:itemSv.id,
-				img:itemSv.img,
-				price:itemSv.price,
-				name:itemSv.name
-			};
-			itemCliArr.push(itemCli);
-		});
-		res.contentType('application/json');
-		res.send(itemCliArr);
-	});
-});
+
 
 module.exports = router;

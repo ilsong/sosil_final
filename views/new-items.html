@@ -1,11 +1,11 @@
 <!--recommended_items-->
-<div ng-init="initList()"></div>
+<div ng-init="initNewItem()"></div>
 <div class="recommended_items">
     <h2 class="title text-center">NEW ITEMS</h2>
 
     <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="item active" ng-repeat="item in mainItemList | limitTo: 3 : 0 ">
+            <div class="item active" ng-repeat="item in newItemList | limitTo: 3 : 0 ">
                 <div class="col-sm-4">
                     <div class="product-image-wrapper">
                         <div class="single-products">

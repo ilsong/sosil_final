@@ -1,5 +1,5 @@
-
-<header id="header"><!--header-->
+<!--<div ng-init="initHeader()"></div>-->
+<header id="header" ><!--header-->
     <div class="header-middle"><!--header-middle-->
         <div class="container">
             <div class="row">
@@ -7,20 +7,30 @@
                     <div class="logo pull-left">
                         <a href="/main#/"><img src="/assets/images/home/logo.png" alt="" /></a>
                     </div>
-
                 </div>
                 <div class="col-sm-8">
-                    <div class="shop-menu pull-right">
-                        <ul class="nav navbar-nav">
-                            <li><a href="/main#/member/info"><i class="fa fa-user"></i> Account</a></li>
-                            <!--<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>-->
-                            <li><a href="/main#/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                            <li><a href="/main#/checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                            <li><a href="/main#/login"><i class="fa fa-lock"></i> Login</a></li>
-                            <li><a href="/main#/logout"><i class="fa fa-unlock"></i> Logout {{session.member}}</a></li>
+                    <table align="right">
+                        <tr>
+                            <td>
+                                <div class="shop-menu pull-right">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="/main#/member/info"><i class="fa fa-user"></i> Account</a></li>
+                                        <!--<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>-->
+                                        <li><a href="/main#/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                        <li><a href="/main#/checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                                        <li><a href="/main#/login"><i class="fa fa-lock"></i> Login</a></li>
+                                        <li><a href="/main#/logout"><i class="fa fa-unlock"></i> Logout {{session.member}}</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right">
+                                {{member.mb_name}}님 현재 포인트는 {{member.mb_point}}입니다.
+                            </td>
+                        </tr>
+                    </table>
 
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>

@@ -31,13 +31,14 @@ router.get('/', function(req, res) {
             cartSv.Item = cartSv.Item.dataValues;
             console.log(cartSv.Item);
             var cartCli = {
-                id : cartSv.ck_no,
+                id : cartSv.id,
                 total : cartSv.total,
                 point : cartSv.point,
                 quantity : cartSv.quantity,
                 ck_no : cartSv.ck_no,
-                it_id : cartSv.it_id,
+                it_id : cartSv.Item.it_id,
                 mb_id : cartSv. mb_id,
+                name: cartSv.Item.name,
                 createdAt : cartSv.createdAt,
                 updatedAt : cartSv.updatedAt,
                 img:cartSv.Item.img,

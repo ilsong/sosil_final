@@ -155,7 +155,6 @@
 					</td>
 					<td class="cart_description">
 						<h4><a href="">{{cart.name}}</a></h4>
-						<!--<p>Web ID: {{cart.code}}</p>-->
 					</td>
 					<td class="cart_price">
 						<p>{{cart.price}}원</p>
@@ -175,6 +174,7 @@
 						<a class="cart_quantity_delete" ng-click="delCart(cart)"><i class="fa fa-times"></i></a>
 					</td>
 				</tr>
+
 				<tr>
 					<td colspan="4">&nbsp;</td>
 					<td colspan="2">
@@ -224,8 +224,9 @@
 
 		<div class="register-req">
 			<p>사용자 정보와 동일합니까?
-				<input type="checkbox"/></p>
-		</div><!--/register-req-->
+				<input type="checkbox" ng-change="checkUser(member,member.selected)" ng-model="member.selected"/></p>
+		</div>
+		<!--/register-req-->
 
 		<div class="shopper-informations">
 			<div class="row">
@@ -233,8 +234,8 @@
 					<div class="shopper-info">
 						<p>Shopper Information</p>
 						<form>
-							<input type="text" placeholder="Display Name">
-							<input type="text" placeholder="User Name">
+							<input type="text" placeholder="User Name" ng-model="member.mb_name">
+							<input type="text" placeholder="User Phone" ng-model="member.mb_phone">
 						</form>
 					</div>
 				</div>
@@ -290,7 +291,6 @@
 									<option value="credit">신용카드</option>
 								</select>
 							</form>
-
 							<form ng-if="check.payment=='bank'">
 								<select>
 									<option>신한은행</option>
@@ -313,8 +313,8 @@
 								<input type="text" placeholder="csv"/>
 							</form>
 
-							<input type="checkbox">전체 약관에 동의합니다<br>
-							<a class="btn btn-primary" href="">결제하기</a>
+							<input type="checkbox" ng-model="check.isAgree">전체 약관에 동의합니다<br>
+							<a class="btn btn-primary" ng-click="checkout()">결제하기</a>
 						</div>
 					</div>
 				</div>
