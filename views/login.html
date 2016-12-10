@@ -35,21 +35,18 @@
 
 	<script type="text/javascript">
 		function login() {
-			$("#login-form").submit(function(event) {
-				event.preventDefault();
-				$.ajax({
-					type: "POST",
-					url: "/member/login",
-					data: $(this).serialize(),
-					success: function(data) {
-						if(data){
-							alert("환영합니다. "+data.mb_name+"님");
-							location.href='/main#/';
-						}
-						else
-							alert('아이디 혹은 비밀번호를 확인해주세요');
+			$.ajax({
+				type: "POST",
+				url: "/member/login",
+				data: $("#login-form").serialize(),
+				success: function(data) {
+					if(data){
+						alert("환영합니다. "+data.mb_name+"님");
+						location.href='/main#/';
 					}
-				});
+					else
+						alert('아이디 혹은 비밀번호를 확인해주세요');
+				}
 			});
 		}
 
@@ -71,22 +68,19 @@
 			else if(data[3].split('=')[1] == "")
 				alert("전화번호를 입력해주세요!");
 			else {
-				$("#signup-form").submit(function(event) {
-					event.preventDefault();
-					$.ajax({
-						type: "POST",
-						url: "/member/register",
-						data: $(this).serialize(),
-						success: function(data) {
-							if(data) {
-								alert("환영합니다! 회원가입되었습니다.");
-								location.href='/main#/';
-							}
-							else{
-								alert('이미 존재하는 아이디입니다!');
-							}
+				$.ajax({
+					type: "POST",
+					url: "/member/register",
+					data: $("#signup-form").serialize(),
+					success: function(data) {
+						if(data) {
+							alert("환영합니다! 회원가입되었습니다.");
+							location.href='/main#/';
 						}
-					});
+						else{
+							alert('이미 존재하는 아이디입니다!');
+						}
+					}
 				});
 			}
 		}
