@@ -1,4 +1,4 @@
 node_modules/
 config/
 public/assets/images/products/
-.idea/
+public/bower_components/
