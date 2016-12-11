@@ -25,7 +25,7 @@ router.post('/register', function(req, res, next) {
 
 router.get('/new', function(req, res) {
 	models.Item.findAll({
-		order : 'updatedAt DESC'
+		order : 'createdAt DESC'
 	}).then(function(itemSvArr) {
 		var itemCliArr=[];
 		itemSvArr.forEach(function(itemSv){
