@@ -8,7 +8,7 @@ app.controller('memberCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce'
 	$scope.initMember = function () {
 
 		$http.get('/member/getSession').then(function(data){
-			if(data) {
+			if(data.data) {
 				$scope.memberInfo = {
 					name:data.data.mb_name,
 					id:data.data.mb_id,
