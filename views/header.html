@@ -18,15 +18,15 @@
                                         <!--<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>-->
                                         <li><a href="/main#/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                         <li><a href="/main#/checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                                        <li><a href="/main#/login"><i class="fa fa-lock"></i> Login</a></li>
-                                        <li><a href="/main#/logout"><i class="fa fa-unlock"></i> Logout {{session.member}}</a></li>
+                                        <li ng-if="!$root.session"><a href="/main#/login"><i class="fa fa-lock"></i> Login</a></li>
+                                        <li ng-if="$root.session"><a href="" ng-click="logout()"><i class="fa fa-unlock"></i> Logout</a></li>
                                     </ul>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td style="text-align: right">
-                                {{member.mb_name}}님 현재 포인트는 {{member.mb_point}}입니다.
+                                <p ng-if="$root.session">{{$root.session.mb_name}}님 현재 포인트는 {{$root.session.mb_point}}pt입니다.</p>
                             </td>
                         </tr>
                     </table>
@@ -82,4 +82,4 @@
     </div><!--/header-bottom-->
 </header><!--/header-->
 
-<script src="/javascripts/controllers/HeaderCtrl.js"></script>
+<script src="/javascripts/controllers/LoginCtrl.js"></script>

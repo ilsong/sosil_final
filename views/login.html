@@ -36,7 +36,6 @@
 
 	<script type="text/javascript">
 		function login() {
-
 			$.ajax({
 				type: "POST",
 				url: "/member/login",
@@ -44,6 +43,7 @@
 				success: function(data) {
 					if(data){
 						alert("환영합니다. "+data.mb_name+"님");
+						location.reload();
 						location.href='/main#/';
 					}
 					else
