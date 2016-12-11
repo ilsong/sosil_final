@@ -1,6 +1,6 @@
 
 
-app.controller('loginCtrl', ['$rootScope', '$scope', '$http', '$cookies', '$location','localStorageService', function($rootScope, localStorageService, $scope, $http, $cookies, $location){
+app.controller('loginCtrl', ['$rootScope', '$scope', '$http', '$cookies', '$location', function($rootScope, $scope, $http, $cookies, $location){
     
     $scope.loginSubmit = function(){
         var submit = {
@@ -27,7 +27,8 @@ app.controller('loginCtrl', ['$rootScope', '$scope', '$http', '$cookies', '$loca
         function(data) {
           $rootScope.session = null;
         });
-       $location.path( "/" );
+       // $location.path( "/" );
+        alert('logout성공');
     };
 
 

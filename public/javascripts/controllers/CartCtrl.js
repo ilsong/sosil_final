@@ -76,9 +76,11 @@ app.controller('cartCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', 
 
         var check={
             // isAgree:$scope.check.isAgree,
+            id:0,
             payment:$scope.check.payment,
             total:0,
-            total_point:0
+            total_point:0,
+            ck_id:0
         };
         
         if(!$scope.check.isAgree){
@@ -107,9 +109,11 @@ app.controller('cartCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', 
                         check=data.data.check;
                     /*   check.id=data.data.ck_id;//check.id 새로 받아옴 OK
                         check.mb_no=data.data.mb_no;*/
-                        // alert(check.id);
-                        console.log('check post 확인'+check.mb_no+','+check.id);
+                  /*      alert('check post 확인 checkid'+check.id);
+                        console.log('check post 확인'+check.mb_no+','+check.id);*/
                         alert('상품이 결제되었습니다.');
+
+
                     }
                     else{
                         if(data.data.msg == 'doLogin'){
@@ -122,7 +126,7 @@ app.controller('cartCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', 
                 //cart에 ck_id 업데이트 하기
                 $scope.userChecked.forEach(function(cart){
                     // cart.ck_id=check.id;
-                    // alert('ck_id update'+check.id);
+                    alert('ck_id update'+check.id);
                     cart.ck_id=check.id;
                     cart.finished=1;
                     $http.put('/cart',cart).then(function(data){
@@ -133,6 +137,8 @@ app.controller('cartCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', 
                     });
 
                 });
+
+
 
                 //user의 point update하기
                /* console.log('member point update하기전'+check.total_point+",mb_no:"+check.mb_no);
