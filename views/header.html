@@ -19,7 +19,7 @@
                                         <li><a href="/main#/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                         <li><a href="/main#/checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                         <li ng-if="!$root.session"><a href="/main#/login"><i class="fa fa-lock"></i> Login</a></li>
-                                        <li ng-if="$root.session"><a href="" ng-click="logout()"><i class="fa fa-unlock"></i> Logout</a></li>
+                                        <li ng-if="$root.session"><a ng-click="logout()"><i class="fa fa-unlock"></i> Logout</a></li>
                                     </ul>
                                 </div>
                             </td>
