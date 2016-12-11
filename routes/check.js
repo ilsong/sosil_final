@@ -33,6 +33,20 @@ router.post('/', function (req, res) {
                 cartSv.updateAttributes(cart).then(function(){
                     console.log('cart정보 update 성공');
                 });
+                //--item 정보 변경--
+                models.Item.findOne({
+                    where:{id:cartSv.it_id}
+                }).then(function(itemSv){
+                    var it_amount= itemSv.amount-cartSv.quantity;
+                    var it_purchased= itemSv.purchased+cartSv.quantity;
+                    itemSv.updateAttributes({
+                        amount:it_amount,
+                        purchased:it_purchased
+                    }).then(function(){
+                        console.log('item정보 update성공');
+                    });
+                });
+                //--item 정보 변경--
             });
         });
     }).then(function(){
@@ -41,13 +55,19 @@ router.post('/', function (req, res) {
         }).then(function(member){
             var new_point= member.mb_point+parseInt(req.body.total_point);
             console.log('point수정'+new_point);
-            member.mb_point=new_point;
-            member.updateAttributes(member).then(function(){
-                res.send({
-                    error:false
-                });
+            // member.mb_point=new_point;
+            member.updateAttributes({
+                mb_point:new_point
+            }).then(function(){
             });
         });
+        res.send({
+            error:false
+        });
+
+    }).then(function(){
+
+
 
     }).catch(function (error) {
         res.send({error: true});
