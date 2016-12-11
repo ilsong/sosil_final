@@ -107,21 +107,25 @@ app.controller('cartCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', 
                         check=data.data.check;
                     /*   check.id=data.data.ck_id;//check.id 새로 받아옴 OK
                         check.mb_no=data.data.mb_no;*/
+                        // alert(check.id);
                         console.log('check post 확인'+check.mb_no+','+check.id);
                         alert('상품이 결제되었습니다.');
                     }
                     else{
-                        if(data.data.msg == 'doLogin')
+                        if(data.data.msg == 'doLogin'){
                             $location.path("main#/login");
+                        }
+
                     }
                 });
 
                 //cart에 ck_id 업데이트 하기
                 $scope.userChecked.forEach(function(cart){
                     // cart.ck_id=check.id;
-                    // console.log('cart정보 id update'+cart.id);
-                    console.log('cart정보 ck_id update'+check.id);
-                    $http.put('/cart',{id:cart.id,ck_id:check.id,finished:1}).then(function(data){
+                    // alert('ck_id update'+check.id);
+                    cart.ck_id=check.id;
+                    cart.finished=1;
+                    $http.put('/cart',cart).then(function(data){
                         //cart의 ck_id 를 update한다.
                         if(data.data.error==false){
                             alert('장바구니의 결제 정보가 업데이트 되었습니다.');

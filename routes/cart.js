@@ -115,7 +115,7 @@ router.delete('/:check', function(req, res) {
 
 
 router.put('/',function(req,res){
-    console.log('params.id'+req.body.id);
+    console.log('params.id:for cart put'+req.body.id);
     models.Cart.findOne({
         where:{
             id:req.body.id

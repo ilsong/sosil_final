@@ -45,6 +45,7 @@ router.get('/logout', function(req, res, next) {
     res.send({
         error: false 
     });
+
 });
 
 router.get('/getSession', function(req, res, next) {
