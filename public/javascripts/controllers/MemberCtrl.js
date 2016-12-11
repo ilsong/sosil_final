@@ -6,6 +6,7 @@ app.controller('memberCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce'
 	// $scope.checkbox = [];
 
 	$scope.initMember = function () {
+
 		$http.get('/member/getSession').then(function(data){
 			if(data) {
 				$scope.memberInfo = {
