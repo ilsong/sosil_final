@@ -82,10 +82,11 @@ router.post('/register', function(req, res) {
 	});
 });
 
+router.get('/findpw', function(req, res){
+	res.render('findpw');
+});
+
 router.post('/findpw', function(req, res) {
-	console.log('findPw:'+req.body.mb_id);
-	console.log('findName:'+req.body.mb_name);
-	console.log('findPhone:'+req.body.mb_phone);
 	models.Member.findOne({
 		where: {
 			mb_id: req.body.mb_id,
@@ -101,26 +102,20 @@ router.post('/findpw', function(req, res) {
 	});
 });
 
-// Read
-router.get('/:mb_id', function(req, res) {
+router.post('/changepw', function(req, res) {
 	models.Member.findOne({
-        where: {
-            mb_id: req.params.mb_id
-        }
-    }).then(function(member) {
-        if (user !== null) {
-            var userCli ={};
-            userCli.mb_id = member.mb_id;
-            userCli.mb_pw = member.mb_pw;
-
-            res.contentType('application/json');
-            res.send(userCli);
-        } else {
-            res.send({
-                error: true
-            });
-        }
-    });
+		where: {
+			mb_id: req.body.mb_id,
+			mb_name: req.body.mb_name,
+			mb_phone: req.body.mb_phone
+		}
+	}).then(function(user){
+		user.updateAttributes({
+			mb_pw: sha256(req.body.mb_pw)
+		}).then(function(){
+			res.send(true);
+		});
+	});
 });
 
 

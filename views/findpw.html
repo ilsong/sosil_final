@@ -19,17 +19,41 @@
 <script src="/assets/js/jquery.js"></script>
 <script type="text/javascript">
 	function findpw() {
-		alert("hi");
+		var form = document.getElementById("find-form");
+		var id = form.elements[0].value;
+		var name = form.elements[1].value
+		var phone = form.elements[2].value;
 		$.ajax({
 			type: "POST",
 			url: "/member/findpw",
-			data: $("#find-form").serialize(),
+			data: {
+				mb_name: name,
+				mb_id: id,
+				mb_phone: phone
+			},
 			success: function(data) {
-				if(data)
-					alert('성공');
-				else
-					alert('실패');
+				if(data){
+					alert("성공!");
+					var pw = prompt("변경할 비밀번호를 입력해주세요.", "");
+					$.ajax({
+						type: "POST",
+						url: "/member/changepw",
+						data: {
+							mb_name: name,
+							mb_id: id,
+							mb_phone: phone,
+							mb_pw: pw
+						},
+						success: function(data) {
+							alert("변경되었습니다.");
+							window.close();
+						}
+					});
+				}
+				else{
+					alert("일치하는 회원정보가 없습니다.");
+				}
 			}
 		});
 	}
-</script> -
+</script>
