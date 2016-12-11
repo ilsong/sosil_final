@@ -39,13 +39,12 @@ router.post('/login', function(req, res, next) {
 });
 
 // 로그아웃
-router.get('/logout', function(req, res, next) {
-    req.session.member = {};
-    delete req.session.member;
-    res.send({
-        error: false 
-    });
-
+router.post('/logout', function(req, res, next) {
+	req.session.member = {};
+	delete req.session.member;
+	res.send({
+		error: false 
+	});
 });
 
 router.get('/getSession', function(req, res, next) {
