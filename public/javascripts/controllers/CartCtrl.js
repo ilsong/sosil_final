@@ -100,8 +100,11 @@ app.controller('cartCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', 
                     check.total_point=check.total*1/100;
                 }
 
+                // $http.put().then(function(){});
+
                 $http.post('/check',{check:check}).then(function(data){
                     if(data.data.error == false){
+                       check.id=data.data.id;//check.id 새로 받아옴 OK
                         alert('상품이 결제되었습니다.');
                     }
                     else{
@@ -110,7 +113,26 @@ app.controller('cartCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', 
                     }
                 });
 
+                //cart에 ck_id 업데이트 하기
+                $scope.userChecked.forEach(function(cart){
+                    // cart.ck_id=check.id;
+                    // console.log('cart정보 id update'+cart.id);
+                    // console.log('cart정보 ck_id update'+check.id);
+                    $http.put('/cart',{id:cart.id,ck_id:check.id,finished:1}).then(function(data){
+                        //cart의 ck_id 를 update한다.
+                        if(data.data.error==false){
+                            alert('장바구니의 결제 정보가 업데이트 되었습니다.');
+                        }
+                    });
+
+                });
+
+                //user의 point update하기
+
+
+
             }
+
             $scope.cartList = $scope.cartList.filter(function(item){
                 return !item.selected;
             });

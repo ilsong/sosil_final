@@ -41,66 +41,6 @@ app.controller('itemCtrl', ['$scope', '$http','Upload','$routeParams', '$cookies
     };
 
 
-    // $scope.checkbox = [];
-
-   /* $scope.initItem = function () {
-
-
-        $http({
-            url: '/items/list/',
-            method: "GET",
-            params: {
-                 category: $routeParams.id
-            }
-        }).success(function (data) {
-
-            $scope.itemList = data;
-
-
-            $scope.range = function() {
-                var rangeSize = $scope.pageCount();
-                var ret = [];
-                var start = 0;
-
-                if ( start > $scope.pageCount()-rangeSize ) {
-                    start = $scope.pageCount()-rangeSize+1;
-                }
-
-                for (var i=start; i<start+rangeSize; i++) {
-                    ret.push(i);
-                }
-                return ret;
-            };
-
-            $scope.prevPage = function() {
-                if ($scope.currentPage > 0) {$scope.currentPage--;}
-            };
-            $scope.prevPageDisabled = function() {
-                return $scope.currentPage === 0;
-            };
-            $scope.pageCount = function() {
-                return Math.ceil(parseFloat($scope.itemList.length)/parseFloat($scope.itemsPerPage));
-            };
-            $scope.nextPage = function() {
-                if ($scope.currentPage < $scope.pageCount()-1) {$scope.currentPage++;}
-            };
-            $scope.nextPageDisabled = function() {
-                return $scope.currentPage === $scope.pageCount();
-            };
-            $scope.setPage = function(n) {
-                $scope.currentPage = n;
-            };
-        });
-
-        $scope.categoryId = $routeParams.id;
-
-    };*/
-
-
-
-
-
-
 
 
 }]);

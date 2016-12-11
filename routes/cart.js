@@ -17,7 +17,8 @@ router.get('/', function(req, res) {
         // order : 'id ASC',
         where :
         {
-            mb_no : req.session.member.mb_no
+            mb_no : req.session.member.mb_no,
+            finished:0
         },
         include: {
             model: models.Item,
@@ -85,6 +86,46 @@ router.delete('/:id', function(req, res) {
                 error: true
             });
         }
+    });
+});
+
+
+router.delete('/:check', function(req, res) {
+    console.log("deleteCheckedCard"+req.params.ck_id);
+    var mb_no=req.session.member.mb_no;
+    models.Cart.findAll({
+        where: {
+            ck_id: req.params.check
+            ,mb_no: mb_no
+        }
+    }).then(function(cart) {
+        if (cart !== null) {
+            cart.destroy().then(function() {
+                res.send({
+                    error: false
+                });
+            });
+        } else {
+            res.send({
+                error: true
+            });
+        }
+    });
+});
+
+
+router.put('/',function(req,res){
+    console.log('params.id'+req.body.id);
+    models.Cart.findOne({
+        where:{
+            id:req.body.id
+        }
+    }).then(function(cart){
+       cart.updateAttributes(req.body).then(function(){
+           res.send({
+               error:false
+           });
+       });
     });
 });
 

@@ -10,7 +10,6 @@ module.exports = function(sequelize, DataTypes) {
         },
         amount: {
             type: DataTypes.INTEGER,
-            unique: true,
             allowNull: false,
             defaultValue:0,
             comment: "아이템 재고수량"

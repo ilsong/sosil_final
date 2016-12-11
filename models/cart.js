@@ -20,6 +20,12 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true,
             defaultValue: 1,
             comment: "물품개수"
+        },
+        finished:{
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            defaultValue: 0,
+            comment: "결제완료"
         }
     }, {
         tableName: 'cart',
