@@ -123,4 +123,21 @@ router.get('/:mb_id', function(req, res) {
     });
 });
 
+
+router.put('/point',function(req,res){
+	console.log('point update'+req.body.mb_point+','+req.body.mb_no);
+	models.Member.findOne({
+		where:{mb_no:req.body.mb_no}
+	}).then(function(member){
+		var new_point= member.mb_point+parseInt(req.body.mb_point);
+		console.log('point수정'+new_point);
+		req.body.mb_point=new_point;
+		member.updateAttributes(req.body).then(function(){
+			res.send({
+				error:false
+			});
+		});
+	});
+});
+
 module.exports = router;

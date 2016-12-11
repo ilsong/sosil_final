@@ -90,7 +90,7 @@ app.controller('mainCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', 
 
 
     $scope.initHeader=function(){
-        alert('initHeader');
+        // alert('initHeader');
 
       /*  $http.get('/member/getSession').success(function(data) {
             if(!data.error){
@@ -102,7 +102,7 @@ app.controller('mainCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', 
         // alert($rootScope.session);
         $scope.member=$rootScope.session;*/
 
-    }
+    };
 
 
 }]);

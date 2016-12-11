@@ -22,6 +22,7 @@ router.post('/', function(req, res) {
 
     models.Checkout.create(req.body.check).then(function(result) {
         console.log('create한 이후 result값:'+result.id);
+        console.log('create한 이후 result값:'+result.mb_no);
        /* models.Cart.updateAttributes({ck_id:result.id}).then(function(cart){
             cart.destroy().then(function(){
                 console.log('delete성공'+cart.id);
