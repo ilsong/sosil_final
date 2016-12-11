@@ -8,11 +8,13 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             // unique: true,
             allowNull: true,
+            defaultValue: 0,
             comment: "장바구니 총 가격"
         },
         point: {
             type: DataTypes.INTEGER,
             allowNull: true,
+            defaultValue: 0,
             comment: "장바구니 총 적립포인트"
         },
         quantity:{

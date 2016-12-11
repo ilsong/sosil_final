@@ -75,13 +75,12 @@ app.controller('cartCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', 
     $scope.checkout=function(){
 
         var check={
-            // isAgree:$scope.check.isAgree,
-            id:0,
             payment:$scope.check.payment,
             total:0,
             total_point:0,
-            ck_id:0
+            cartList:$scope.userChecked
         };
+
         
         if(!$scope.check.isAgree){
             alert("약관에 동의해주세요");
@@ -93,27 +92,18 @@ app.controller('cartCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', 
                     // $http.delete('/board/' + boardId);
                     check.total+= cart.price*cart.quantity;
                 };
-
                 if(check.payment=='bank'){
                     check.total_point=check.total*2/100;
                 }
-                else{
-                    //credit 신용카드 결제인 경우
+                else{//credit 신용카드 결제인 경우
                     check.total_point=check.total*1/100;
                 }
 
                 // $http.put().then(function(){});
 
-                $http.post('/check',{check:check}).then(function(data){
+                $http.post('/check',check).then(function(data){
                     if(data.data.error == false){
-                        check=data.data.check;
-                    /*   check.id=data.data.ck_id;//check.id 새로 받아옴 OK
-                        check.mb_no=data.data.mb_no;*/
-                  /*      alert('check post 확인 checkid'+check.id);
-                        console.log('check post 확인'+check.mb_no+','+check.id);*/
                         alert('상품이 결제되었습니다.');
-
-
                     }
                     else{
                         if(data.data.msg == 'doLogin'){
@@ -124,19 +114,15 @@ app.controller('cartCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', 
                 });
 
                 //cart에 ck_id 업데이트 하기
-                $scope.userChecked.forEach(function(cart){
-                    // cart.ck_id=check.id;
-                    alert('ck_id update'+check.id);
+               /* $scope.userChecked.forEach(function(cart){
                     cart.ck_id=check.id;
                     cart.finished=1;
                     $http.put('/cart',cart).then(function(data){
-                        //cart의 ck_id 를 update한다.
                         if(data.data.error==false){
                             alert('장바구니의 결제 정보가 업데이트 되었습니다.');
                         }
                     });
-
-                });
+                });*/
 
 
 
