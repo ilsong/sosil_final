@@ -27,17 +27,23 @@ app.controller('mainCtrl', ['$rootScope','$scope', '$http', function($rootScope,
         var quantity=parseInt(amount);*/
 
         var itemId=item.id;
-        $http.post('/cart',{it_id:itemId}).then(function(data){
-            if(data.data.error == false){
-                alert('상품을 장바구니에 담았습니다.');
-            }
-            else{
-                if(data.data.msg){
-                    alert(data.data.msg);
+        if(item.amount>0){
+            $http.post('/cart',{it_id:itemId}).then(function(data){
+                if(data.data.error == false){
+                    alert('상품을 장바구니에 담았습니다.');
                 }
-            }
-        });
-        // $scope.cartList.push(item);
+                else{
+                    if(data.data.msg){
+                        alert(data.data.msg);
+                        // $location.path("main#/login");
+                    }
+
+                }
+            });
+        }else{
+            alert('Sold Out');
+        }
+
     };
 
 

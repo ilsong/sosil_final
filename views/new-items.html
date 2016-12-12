@@ -13,8 +13,10 @@
                                 <img src="{{item.img}}" alt=""/>
                                 <h2>{{item.price}}원</h2>
                                 <p>{{item.name}}</p>
-                                <a class="btn btn-default add-to-cart" ng-click="addCart(item)"><i
+                                <a class="btn btn-default add-to-cart" ng-if="item.amount>0" ng-click="addCart(item)"><i
                                         class="fa fa-shopping-cart"></i>Add to cart</a>
+                                <a class="btn btn-default add-to-cart" ng-if="item.amount<1" ng-click="addCart(item)">
+                                    Sold Out</a>
                             </div>
                         </div>
                     </div>

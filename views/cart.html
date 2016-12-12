@@ -61,8 +61,8 @@
 					<td class="cart_quantity">
 						<div class="cart_quantity_button">
 							<a class="cart_quantity_up" href="" ng-click="increase(cart)"> + </a>
-							<input class="cart_quantity_input" type="text" ng-model="cart.quantity"
-								   autocomplete="off" size="2">
+							<input class="cart_quantity_input" type="text" ng-model="cart.quantity" ng-bind="checkAmount(cart)"
+								   autocomplete="off" size="2" readonly>
 							<a class="cart_quantity_down" href="" ng-click="decrease(cart)"> - </a>
 						</div>
 						<div align="center">
@@ -76,7 +76,6 @@
 						<a class="cart_quantity_delete" ng-click="delCart(cart)"><i class="fa fa-times"></i></a>
 					</td>
 				</tr>
-
 				<tr>
 					<td colspan="4">&nbsp;</td>
 					<td colspan="2">
