@@ -2,7 +2,7 @@
  * Created by 김서진 on 2016-12-06.
  */
 
-app.controller('memberCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', '$window', function($rootScope,$scope, $http, $cookies, $sce, $window) {
+app.controller('memberCtrl', ['$rootScope','$scope', '$http', function($rootScope,$scope, $http) {
 	// $scope.checkbox = [];
 
 	$scope.initMember = function () {

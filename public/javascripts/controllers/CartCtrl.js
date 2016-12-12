@@ -2,7 +2,7 @@
  * Created by 김서진 on 2016-11-30.
  */
 
-app.controller('cartCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', '$window', function($rootScope,$scope, $http, $cookies, $sce, $window) {
+app.controller('cartCtrl', ['$rootScope','$scope', '$http', function($rootScope,$scope, $http) {
     $scope.userChecked = [];
     $scope.initList=function(){
     };

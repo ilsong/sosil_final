@@ -1,6 +1,6 @@
 <!--<div ng-init="initHeader()"></div>-->
 <header id="header" ng-controller="loginCtrl"><!--header-->
-    <div class="header-middle"><!--header-middle-->
+    <div class="header-middle" ng-init="initHeader()"><!--header-middle-->
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
@@ -15,11 +15,9 @@
                                 <div class="shop-menu pull-right">
                                     <ul class="nav navbar-nav">
                                         <li><a href="/main#/member/info"><i class="fa fa-user"></i> Account</a></li>
-                                        <!--<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>-->
                                         <li><a href="/main#/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                   <!--     <li><a href="/main#/checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>-->
                                         <li ng-if="!$root.session"><a href="/main#/login"><i class="fa fa-lock"></i> Login</a></li>
-                                        <li ng-if="$root.session"><a ng-click="logout()"><i class="fa fa-unlock"></i> Logout</a></li>
+                                        <li ng-if="$root.session"><a href="" ng-click="logout()"><i class="fa fa-unlock"></i> Logout</a></li>
                                     </ul>
                                 </div>
                             </td>

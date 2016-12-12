@@ -26,7 +26,7 @@ app.config(function (localStorageServiceProvider) {
         .setNotify(true, true)
 });
 
-app.run(['$rootScope', '$http', '$cookies', '$location', '$controller', '$sce', function($rootScope, $http, $cookies, $location, $controller, $sce) {
+app.run(['$rootScope', '$http', '$location', '$controller', function($rootScope, $http,$location, $controller) {
 
     $http.get('/member/getSession').then(function(data) {
         if(!data.error)

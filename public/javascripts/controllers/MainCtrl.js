@@ -1,60 +1,9 @@
 
-app.controller('mainCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', '$window', function($rootScope,$scope, $http, $cookies, $sce, $window){
+app.controller('mainCtrl', ['$rootScope','$scope', '$http', function($rootScope,$scope, $http){
     $scope.checkbox = [];
-
-    // $scope.member=$rootScope.member.mb_name;
-    $scope.initList=function(){
-
-        $scope.mainItemList=[
-            {
-                id:1,
-                img:"/assets/images/home/recommend1.jpg",
-                price:56000,
-                name:"Easy Polo Black Edition"
-            },{
-                id:2,
-                img:"/assets/images/home/recommend2.jpg",
-                price:56000,
-                name:"Easy Polo Black Edition"
-
-            },{
-                id:3,
-                img:"/assets/images/home/recommend3.jpg",
-                price:56000,
-                name:"Easy Polo Black Edition"
-
-            },{
-                id:4,
-                img:"/assets/images/home/recommend4.jpg",
-                price:56000,
-                name:"Easy Polo Black Edition"
-
-            },{
-                id:5,
-                img:"/assets/images/home/recommend5.jpg",
-                price:56000,
-                name:"Easy Polo Black Edition"
-
-            },
-            {
-                id:6,
-                img:"/assets/images/home/recommend6.jpg",
-                price:56000,
-                name:"Easy Polo Black Edition"
-            }
-        ];
-
-       /* $http.get('/member/getSession').then(function(data){
-            alert(data);
-        });*/
-     /*  alert($rootScope.session);
-
-         console.log("session값 main"+$rootScope.session);*/
-    };
 
     $scope.initNewItem=function(){
         $http.get('/item/new').then(function(data){
-            // alert("itemList"+data);
             $scope.newItemList=data.data;
         });
     };
@@ -73,10 +22,9 @@ app.controller('mainCtrl', ['$rootScope','$scope', '$http', '$cookies', '$sce', 
 
     $scope.addCart = function(item){
         // alert('상품을 장바구니에 담았습니다.');
-        alert(item.id);
+        // alert(item.id);
         var itemId=item.id;
-        $http.post('/cart',{id:itemId}).then(function(data){
-
+        $http.post('/cart',{it_id:itemId}).then(function(data){
             if(data.data.error == false){
                 alert('상품을 장바구니에 담았습니다.');
             }

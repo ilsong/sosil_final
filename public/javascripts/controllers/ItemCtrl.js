@@ -2,7 +2,7 @@
  * Created by 김서진 on 2016-11-30.
  */
 
-app.controller('itemCtrl', ['$scope', '$http','Upload','$routeParams', '$cookies', '$sce', '$window', function($scope, $http,Upload,$routeParams, $cookies, $sce, $window) {
+app.controller('itemCtrl', ['$scope', '$http','$routeParams', function($scope, $http,$routeParams) {
     $scope.itemsPerPage=3;
     $scope.currentPage=0;
 
