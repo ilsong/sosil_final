@@ -56,13 +56,28 @@ router.post('/', function(req, res) {
     console.log("카트에 추가"+req.body.it_id);
     console.log("session:" + req.session.member);
     req.body.mb_no = req.session.member.mb_no;
-    models.Cart.create(req.body).then(function() {
-        res.send({
-            error: false
-        });
-    }).catch( function ( error ) {
-        res.send({ error : true });
+    models.Cart.findOne({
+        where:{
+            it_id:req.body.it_id
+        }
+    }).then(function(cart){
+        if(cart!=null){//이미 동일 상품 존재
+            res.send({
+                error: true,
+                msg:'동일 상품이 존재합니다.'
+            });
+        }else{
+            models.Cart.create(req.body).then(function() {
+                res.send({
+                    error: false
+                });
+            }).catch( function ( error ) {
+                res.send({ error : true });
+            });
+        }
     });
+
+
 });
 
 // 카트에 상품 삭제
@@ -90,28 +105,6 @@ router.delete('/:id', function(req, res) {
 });
 
 
-router.delete('/:check', function(req, res) {
-    console.log("deleteCheckedCard"+req.params.ck_id);
-    var mb_no=req.session.member.mb_no;
-    models.Cart.findAll({
-        where: {
-            ck_id: req.params.check
-            ,mb_no: mb_no
-        }
-    }).then(function(cart) {
-        if (cart !== null) {
-            cart.destroy().then(function() {
-                res.send({
-                    error: false
-                });
-            });
-        } else {
-            res.send({
-                error: true
-            });
-        }
-    });
-});
 
 
 router.put('/',function(req,res){
