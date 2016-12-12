@@ -8,9 +8,6 @@ router.post('/register', function(req, res, next) {
 	var category=req.body.category;
 	req.body.img='/assets/images/products/'+category+'/' + file.name;
 	console.log(req.body);
-
-
-
 	file.mv('./public/assets/images/products/'+category+'/' + file.name, function(err) {
 		if(err) {
 			res.status(500).send(err);

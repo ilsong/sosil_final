@@ -5,8 +5,8 @@ var app = angular.module('mainApp', [
     'ngFileUpload',   
     'ngCookies', 
     'ngSanitize',
-    'angular-thumbnails'
-    ,'LocalStorageModule'
+    'angular-thumbnails',
+    'LocalStorageModule'
 ]);
 
 app.filter('offset', function() {
@@ -28,7 +28,7 @@ app.config(function (localStorageServiceProvider) {
 
 app.run(['$rootScope', '$http', '$cookies', '$location', '$controller', '$sce', function($rootScope, $http, $cookies, $location, $controller, $sce) {
 
-    $http.get('/member/getSession').success(function(data) {
+    $http.get('/member/getSession').then(function(data) {
         if(!data.error)
             $rootScope.session = data;
     });
