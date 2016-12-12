@@ -10,7 +10,8 @@ app.controller('cartCtrl', ['$rootScope','$scope', '$http','$window', function($
         $http.get('/cart').then(function(data){
             $scope.cartList = data.data;
             $scope.cartList.forEach(function(cart){
-                $scope.sumPrice += cart.total;
+                // $scope.sumPrice += cart.total;
+                cart.total=cart.price*cart.quantity;
             });
         });
     };
@@ -35,11 +36,20 @@ app.controller('cartCtrl', ['$rootScope','$scope', '$http','$window', function($
         }
     };
     $scope.decrease = function (cart){
-        cart.quantity--;
-        cart.total=cart.price*cart.quantity;
-        if(cart.selected){
-            $scope.sumPrice-=cart.price;
+        if(cart.quantity>1){
+
+            cart.quantity--;
+            cart.total=cart.price*cart.quantity;
+            if(cart.selected){
+                $scope.sumPrice-=cart.price;
+            }
+
+        }else{
+
+            alert('수량은 1개 이상만 가능합니다.');
         }
+
+
 
     };
 
@@ -50,12 +60,15 @@ app.controller('cartCtrl', ['$rootScope','$scope', '$http','$window', function($
 
         angular.forEach($scope.cartList, function(cart) {
             cart.selected = checked;
-            // $scope.userChecked.push(value.id);
             $scope.userChecked.push(cart);
+
+            cart.total=cart.quantity*cart.price;
+            $scope.sumPrice+=cart.total;
         });
 
         if (!checked) {
             $scope.userChecked = [];
+            $scope.sumPrice=0;
         }
     };
 

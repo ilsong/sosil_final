@@ -22,7 +22,7 @@ router.get('/', function(req, res) {
         },
         include: {
             model: models.Item,
-            attributes: ['id', 'name', 'price', 'category','img'],
+            attributes: ['id', 'name', 'price', 'category','img','amount'],
             order: [['createdAt', 'DESC']]
         }
     }).then(function(cartSvArr) {
@@ -42,7 +42,8 @@ router.get('/', function(req, res) {
                 createdAt : cartSv.createdAt,
                 updatedAt : cartSv.updatedAt,
                 img:cartSv.Item.img,
-                price:cartSv.Item.price
+                price:cartSv.Item.price,
+                amount:cartSv.Item.amount
             };
             cartCliArr.push(cartCli);
         });
