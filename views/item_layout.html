@@ -1,7 +1,12 @@
 <!--<div ng-init="initItem()"></div>-->
 
+
+
     <div class="container" ng-init="initItem()">
-        <h2 class="title text-center">BEST ITEMS</h2>
+        <!--<div ng-include="'/views/items/new-items.html'"></div>-->
+        <!--<div ng-include="'/views/items/best-items.html'"></div>-->
+
+        <h2 class="title text-center">{{category}}</h2>
         <div ng-repeat="item in itemList">
             <div class="col-sm-3">
                 <div class="product-image-wrapper">
@@ -24,5 +29,7 @@
             </div>
         </div>
     </div>
+
+
 
 

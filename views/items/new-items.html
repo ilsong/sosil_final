@@ -1,0 +1,31 @@
+<!--recommended_items-->
+<div ng-init="initNewItem()"></div>
+<div class="recommended_items">
+    <h2 class="title text-center">NEW ITEMS</h2>
+
+    <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="item active" ng-repeat="item in newItemList | limitTo: 4 : 0 ">
+                <div class="col-sm-3">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <img src="{{item.img}}" alt=""/>
+                                <h2>{{item.price}}원</h2>
+                                <p>{{item.name}}</p>
+                                <a class="btn btn-default add-to-cart" ng-click="addCart(item)"><i
+                                        class="fa fa-shopping-cart"></i>Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="left recommended-item-control" ng-click="prevPage()" data-slide="prev">
+            <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="right recommended-item-control" ng-click="nextPage()" data-slide="next">
+            <i class="fa fa-angle-right"></i>
+        </a>
+    </div>
+</div><!--/recommended_items-->

@@ -4,9 +4,6 @@
 
 app.controller('cartCtrl', ['$rootScope','$scope', '$http','$window', function($rootScope,$scope, $http,$window) {
     $scope.userChecked = [];
-    $scope.initList=function(){
-    };
-
 
     $scope.initCart = function () {
         $scope.sumPrice = 0;
@@ -28,16 +25,22 @@ app.controller('cartCtrl', ['$rootScope','$scope', '$http','$window', function($
         }
     };
 
+    $scope.increase = function (cart){
+        // $scope.quantity=quantity+1;
+        cart.quantity++;
+        cart.total=cart.price*cart.quantity;
 
-
-
-
-
-    $scope.increase = function (quantity){
-        $scope.quantity=quantity+1;
+        if(cart.selected){
+            $scope.sumPrice+=cart.price;
+        }
     };
-    $scope.decrease = function (quantity){
-        $scope.quantity=quantity-1;
+    $scope.decrease = function (cart){
+        cart.quantity--;
+        cart.total=cart.price*cart.quantity;
+        if(cart.selected){
+            $scope.sumPrice-=cart.price;
+        }
+
     };
 
 
@@ -59,16 +62,13 @@ app.controller('cartCtrl', ['$rootScope','$scope', '$http','$window', function($
     $scope.checkItem = function(cart, checked) {
         if (checked) {
             $scope.userChecked.push(cart);
-
-            $scope.userChecked.forEach(function(cart){
-                $scope.sumPrice += cart.quantity*cart.price;
-
-            });
+            cart.total=cart.quantity*cart.price;
+           $scope.sumPrice+=cart.total;
 
         } else {
-            var cart=$scope.userChecked.pop();
-            alert(cart.id);
-            $scope.sumPrice -= cart.quantity*cart.price;
+           $scope.userChecked.pop();
+            cart.total=cart.quantity*cart.price;
+            $scope.sumPrice -= cart.total;
         }
     };
 
@@ -87,11 +87,12 @@ app.controller('cartCtrl', ['$rootScope','$scope', '$http','$window', function($
         }else{
             var cf=confirm('선택하신 물품을 주문하시겠습니까?');
             if(cf){
-                for(var arrIndex in $scope.userChecked){
+               /* for(var arrIndex in $scope.userChecked){
                     var cart = $scope.userChecked[arrIndex];
                     // $http.delete('/board/' + boardId);
                     check.total+= cart.price*cart.quantity;
-                };
+                };*/
+                check.total=$scope.sumPrice;
                 if(check.payment=='bank'){
                     check.total_point=check.total*2/100;
                 }

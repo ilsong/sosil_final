@@ -6,6 +6,8 @@ app.controller('itemCtrl', ['$rootScope', '$scope', '$http','$routeParams', func
     $scope.itemsPerPage=3;
     $scope.currentPage=0;
 
+    $scope.category='ITEMS';
+
     $scope.initList=function(){
 
     };
@@ -22,6 +24,19 @@ app.controller('itemCtrl', ['$rootScope', '$scope', '$http','$routeParams', func
         $http.get('/item/'+$routeParams.category).then(function(data){
             // alert("itemList"+data);
             $scope.itemList=data.data;
+        });
+    };
+
+    $scope.initNewItem=function(){
+        $http.get('/item/new').then(function(data){
+            $scope.newItemList=data.data;
+        });
+    };
+
+    $scope.initBestItem=function(){
+        $http.get('/item/best').then(function(data){
+            // alert("itemList"+data);
+            $scope.bestItemList=data.data;
         });
     };
 

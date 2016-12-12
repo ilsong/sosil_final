@@ -60,7 +60,8 @@ router.post('/', function(req, res) {
     models.Cart.findOne({
         where:{
             it_id:req.body.it_id,
-            finished:0
+            finished:0,
+            mb_no:req.body.mb_no
         }
     }).then(function(cart){
         if(cart!=null){//이미 동일 상품 존재

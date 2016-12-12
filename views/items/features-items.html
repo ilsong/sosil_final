@@ -1,0 +1,34 @@
+<!--<div ></div>-->
+<style>
+    .itemImg{
+        width:250px;
+        height:350px
+    }
+</style>
+<div class="features_items" ng-init="initItem()">
+    <h2 class="title text-center">{{category}}</h2>
+    <div ng-repeat="item in bestItemList | limitTo: 12 :0">
+        <div class="col-sm-4">
+            <div class="product-image-wrapper">
+                <div class="single-products">
+                    <div class="productinfo text-center">
+                        <img class="itemImg" src="{{item.img}}" alt=""/>
+                        <h2>{{item.price}}원</h2>
+                        <p>{{item.name}}</p>
+                        <a ng-click="addCart(item)" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to
+                            cart</a>
+                    </div>
+                    <div class="product-overlay">
+                        <div class="overlay-content">
+                            <h2>{{item.price}}원</h2>
+                            <p>{{item.name}}</p>
+                            <a ng-click="addCart(item)" class="btn btn-default add-to-cart" >
+                                <i class="fa fa-shopping-cart"></i>Add to cart
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!--featured-item-->

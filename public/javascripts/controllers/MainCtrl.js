@@ -23,6 +23,9 @@ app.controller('mainCtrl', ['$rootScope','$scope', '$http', function($rootScope,
     $scope.addCart = function(item){
         // alert('상품을 장바구니에 담았습니다.');
         // alert(item.id);
+     /*   var amount=prompt('수량을 입력하세요');
+        var quantity=parseInt(amount);*/
+
         var itemId=item.id;
         $http.post('/cart',{it_id:itemId}).then(function(data){
             if(data.data.error == false){
