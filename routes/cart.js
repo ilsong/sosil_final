@@ -56,9 +56,11 @@ router.post('/', function(req, res) {
     console.log("카트에 추가"+req.body.it_id);
     console.log("session:" + req.session.member);
     req.body.mb_no = req.session.member.mb_no;
+    //아직 결제되지 않은 것중 찾기
     models.Cart.findOne({
         where:{
-            it_id:req.body.it_id
+            it_id:req.body.it_id,
+            finished:0
         }
     }).then(function(cart){
         if(cart!=null){//이미 동일 상품 존재

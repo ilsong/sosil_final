@@ -1,6 +1,6 @@
 
 app.controller('mainCtrl', ['$rootScope','$scope', '$http', function($rootScope,$scope, $http){
-    $scope.checkbox = [];
+
 
     $scope.initNewItem=function(){
         $http.get('/item/new').then(function(data){
@@ -29,8 +29,9 @@ app.controller('mainCtrl', ['$rootScope','$scope', '$http', function($rootScope,
                 alert('상품을 장바구니에 담았습니다.');
             }
             else{
-                if(data.data.msg == 'doLogin')
-                    $location.path("main#/login");
+                if(data.data.msg){
+                    alert(data.data.msg);
+                }
             }
         });
         // $scope.cartList.push(item);
