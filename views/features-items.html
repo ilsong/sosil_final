@@ -15,15 +15,29 @@
                         <img class="itemImg" src="{{item.img}}" alt=""/>
                         <h2>{{item.price}}원</h2>
                         <p>{{item.name}}</p>
-                        <a ng-click="addCart(item)" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to
-                            cart</a>
+
+
+                        <a ng-click="addCart(item)" ng-if="item.amount>0" class="btn btn-default add-to-cart">
+                            <i class="fa fa-shopping-cart"></i>
+                            Add to cart
+                        </a>
+
+                        <a ng-click="addCart(item)" ng-if="item.amount<1" class="btn btn-default add-to-cart">
+                           Sold Out
+                        </a>
+
                     </div>
                     <div class="product-overlay">
                         <div class="overlay-content">
                             <h2>{{item.price}}원</h2>
                             <p>{{item.name}}</p>
-                            <a ng-click="addCart(item)" class="btn btn-default add-to-cart" >
-                                <i class="fa fa-shopping-cart"></i>Add to cart
+                            <a ng-click="addCart(item)" ng-if="item.amount>0" class="btn btn-default add-to-cart">
+                                <i class="fa fa-shopping-cart"></i>
+                                Add to cart
+                            </a>
+
+                            <a ng-click="addCart(item)" ng-if="item.amount<1" class="btn btn-default add-to-cart">
+                                Sold Out
                             </a>
                         </div>
                     </div>

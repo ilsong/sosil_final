@@ -27,30 +27,29 @@ app.controller('cartCtrl', ['$rootScope','$scope', '$http','$window', function($
     };
 
     $scope.increase = function (cart){
-        // $scope.quantity=quantity+1;
-        cart.quantity++;
-        cart.total=cart.price*cart.quantity;
+        if(cart.quantity<cart.amount){
+            // $scope.quantity=quantity+1;
+            cart.quantity++;
+            cart.total=cart.price*cart.quantity;
 
-        if(cart.selected){
-            $scope.sumPrice+=cart.price;
+            if(cart.selected){
+                $scope.sumPrice+=cart.price;
+            }
+        }else{
+            alert('재고수량을 초과해서 주문하실 수 없습니다.');
         }
+
     };
     $scope.decrease = function (cart){
         if(cart.quantity>1){
-
             cart.quantity--;
             cart.total=cart.price*cart.quantity;
             if(cart.selected){
                 $scope.sumPrice-=cart.price;
             }
-
         }else{
-
             alert('수량은 1개 이상만 가능합니다.');
         }
-
-
-
     };
 
 
@@ -74,9 +73,13 @@ app.controller('cartCtrl', ['$rootScope','$scope', '$http','$window', function($
 
     $scope.checkItem = function(cart, checked) {
         if (checked) {
-            $scope.userChecked.push(cart);
-            cart.total=cart.quantity*cart.price;
-           $scope.sumPrice+=cart.total;
+            if(cart.amount<1){
+                alert('재고가 없는 물품은 주문하실 수 없습니다');
+            }else{
+                $scope.userChecked.push(cart);
+                cart.total=cart.quantity*cart.price;
+                $scope.sumPrice+=cart.total;
+            }
 
         } else {
            $scope.userChecked.pop();
@@ -165,6 +168,14 @@ app.controller('cartCtrl', ['$rootScope','$scope', '$http','$window', function($
         }
 
     };
+    $scope.checkAmount=function(cart){
+        if(cart.quantity>cart.amount){
+            alert('재고 수량을 초과할 수 없습니다.');
+            cart.quantity=cart.amount;
+        }
+
+    };
+
 /*
     $scope.checkUser=function(member,checked){
         // alert(member.selected);
