@@ -61,6 +61,7 @@ router.post('/', function (req, res) {
             }).then(function(){
             });
         });
+        req.session.member.mb_point = new_point;
         res.send({
             error:false
         });
