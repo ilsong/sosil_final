@@ -62,6 +62,7 @@ router.post('/', function (req, res) {
             });
         });
         req.session.member.mb_point = new_point;
+        console.log('member point 변경:'+new_point);
         res.send({
             error:false
         });
