@@ -15,6 +15,7 @@ router.post('/register', function(req, res, next) {
 		else {
 			models.Item.create(req.body);
 			res.send('file uploaded!');
+			// res.redirect('/main#/item/register');
 		}
 	});
 
@@ -31,7 +32,8 @@ router.get('/new', function(req, res) {
 				id:itemSv.id,
 				img:itemSv.img,
 				price:itemSv.price,
-				name:itemSv.name
+				name:itemSv.name,
+				amount:itemSv.amount
 			};
 			itemCliArr.push(itemCli);
 		});
@@ -51,7 +53,8 @@ router.get('/best', function(req, res) {
 				id:itemSv.id,
 				img:itemSv.img,
 				price:itemSv.price,
-				name:itemSv.name
+				name:itemSv.name,
+				amount:itemSv.amount
 			};
 			itemCliArr.push(itemCli);
 		});
@@ -73,7 +76,8 @@ router.get('/:category', function(req, res) {
 				id:itemSv.id,
 				img:itemSv.img,
 				price:itemSv.price,
-				name:itemSv.name
+				name:itemSv.name,
+				amount:itemSv.amount
 			};
 			itemCliArr.push(itemCli);
 		});
