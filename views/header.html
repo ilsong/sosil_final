@@ -1,6 +1,6 @@
 <!--<div ng-init="initHeader()"></div>-->
 <header id="header" ng-controller="loginCtrl"><!--header-->
-    <div class="header-middle" ng-init="initHeader()"><!--header-middle-->
+    <div class="header-middle" ng-init="initSession()"><!--header-middle-->
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
@@ -65,7 +65,7 @@
                             <li class="dropdown"><a href="/main#/item/6">ACCESSORY</a></li>
 
                             <!--admin계정으로 로그인 시에만 보이게 한다-->
-                            <li class="dropdown"><a href="/main#/item/register">ADMIN<i class="fa fa-angle-down"></i></a>
+                            <li class="dropdown" ng-if="$root.session.admin"><a href="/main#/item/register">ADMIN<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="/main#/item/register">Add Items</a></li>
                                     <li><a href="blog-single.html">ADMIN MENU2</a></li>

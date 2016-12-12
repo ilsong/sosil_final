@@ -76,7 +76,7 @@ app.config(function ($routeProvider) {
             templateUrl: '/views/checkout.html'
         })*/
         .when('/item/register',{
-            // controller:'itemCtrl',
+            controller:'itemCtrl',
             templateUrl:'/views/item_register.html'
         })
         .when('/item/:category',{

@@ -7,9 +7,13 @@ app.controller('loginCtrl', ['$rootScope', '$scope', '$http', '$location', funct
 		});
 	};
 
+	$scope.initSession = function() {
+		$http.get('/member/getSession').success(function(data) {
+			if(!data.error){
+				$rootScope.session = data;
+			}
+		});
+		$scope.member=$rootScope.session;
+	};
 
-	/*$scope.initHeader=function(){
-	 alert('init Header');
-	 }*/
-	
 }]);

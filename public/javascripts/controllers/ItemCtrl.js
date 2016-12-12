@@ -2,7 +2,7 @@
  * Created by 김서진 on 2016-11-30.
  */
 
-app.controller('itemCtrl', ['$scope', '$http','$routeParams', function($scope, $http,$routeParams) {
+app.controller('itemCtrl', ['$rootScope', '$scope', '$http','$routeParams', function($rootScope, $scope, $http,$routeParams) {
     $scope.itemsPerPage=3;
     $scope.currentPage=0;
 
@@ -13,8 +13,6 @@ app.controller('itemCtrl', ['$scope', '$http','$routeParams', function($scope, $
     $scope.getItems=function(){
         // alert('items!');
     };
-
-
 
     $scope.initNew=function(flag){
 
@@ -40,7 +38,19 @@ app.controller('itemCtrl', ['$scope', '$http','$routeParams', function($scope, $
         });
     };
 
-
+    $scope.checkSession = function() {
+        if(!$rootScope.session) {
+            alert("관리자만 접근할 수 있습니다.");
+            window.location.href = '/main#/';
+        }
+        else {
+            alert(JSON.stringify($rootScope.session));
+            if(!$rootScope.session.admin) {
+                alert("관리자만 접근할 수 있습니다.");
+                window.location.href = '/main#/';
+            }
+        }
+    };
 
 
 }]);

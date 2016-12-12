@@ -37,20 +37,4 @@ app.controller('mainCtrl', ['$rootScope','$scope', '$http', function($rootScope,
     };
 
 
-    $scope.initHeader=function(){
-        // alert('initHeader');
-
-      /*  $http.get('/member/getSession').success(function(data) {
-            if(!data.error){
-                $rootScope.session = data;
-                alert('session 얻기 성공');
-            }
-               
-        });
-        // alert($rootScope.session);
-        $scope.member=$rootScope.session;*/
-
-    };
-
-
 }]);
