@@ -30,7 +30,7 @@ app.run(['$rootScope', '$http', '$location', '$controller', function($rootScope,
 
     $http.get('/member/getSession').then(function(data) {
         if(!data.error)
-            $rootScope.session = data;
+            $rootScope.session = data.data;
     });
 
 

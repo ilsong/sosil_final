@@ -38,7 +38,7 @@ app.controller('itemCtrl', ['$rootScope', '$scope', '$http','$routeParams', func
         });
     };
 
-    $scope.checkSession = function() {
+    $scope.checkAdmin = function() {
         if(!$rootScope.session) {
             alert("관리자만 접근할 수 있습니다.");
             window.location.href = '/main#/';
