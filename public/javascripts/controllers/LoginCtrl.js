@@ -2,7 +2,7 @@ app.controller('loginCtrl', ['$rootScope', '$scope', '$http', '$location', funct
 	
 	$scope.logout = function() {
 		$http.post("/member/logout").then(function(data){
-			$rootScope.session = null
+			$rootScope.session = null;
 			$location.path("/main#/");
 		});
 	};

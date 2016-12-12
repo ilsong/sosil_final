@@ -71,10 +71,6 @@ app.config(function ($routeProvider) {
             controller: 'mainCtrl',
             templateUrl: '/views/admin.html'
         })
-      /*  .when('/checkout', {
-            controller: 'checkCtrl',
-            templateUrl: '/views/checkout.html'
-        })*/
         .when('/item/register',{
             controller:'itemCtrl',
             templateUrl:'/views/item_register.html'

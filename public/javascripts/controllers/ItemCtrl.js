@@ -32,8 +32,11 @@ app.controller('itemCtrl', ['$rootScope', '$scope', '$http','$routeParams', func
                 alert('상품을 장바구니에 담았습니다.');
             }
             else{
-                if(data.data.msg == 'doLogin')
-                    $location.path("main#/login");
+                if(data.data.msg){
+                    alert(data.data.msg);
+                    // $location.path("main#/login");
+                }
+
             }
         });
     };
