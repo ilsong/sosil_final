@@ -47,7 +47,6 @@ app.controller('itemCtrl', ['$rootScope', '$scope', '$http','$routeParams', func
             window.location.href = '/main#/';
         }
         else {
-            alert(JSON.stringify($rootScope.session));
             if(!$rootScope.session.admin) {
                 alert("관리자만 접근할 수 있습니다.");
                 window.location.href = '/main#/';
