@@ -55,13 +55,11 @@ router.post('/', function (req, res) {
         }).then(function(member){
             var new_point= member.mb_point+parseInt(req.body.total_point);
             console.log('point수정'+new_point);
-            // member.mb_point=new_point;
             member.updateAttributes({
                 mb_point:new_point
             }).then(function(){
             });
         });
-        req.session.member.mb_point = new_point;
         console.log('member point 변경:'+new_point);
         res.send({
             error:false

@@ -48,10 +48,19 @@ router.post('/logout', function(req, res, next) {
 });
 
 router.get('/getSession', function(req, res, next) {
-	console.log('getSession');
-	console.log(req.session);
-	res.send(req.session.member);
-	//내 세션을 전달하는 부분
+	models.Member.findOne({
+		where: {
+			mb_id: req.session.member.mb_id
+		}
+	}).then(function(user){
+		if (user) {
+			req.session.member.mb_point = user.dataValues.mb_point;
+			res.send(req.session.member);
+		}
+		else {
+			res.send(false);
+		}
+	});
 });
 
 // Create
